@@ -1,9 +1,10 @@
 import React from "react";
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./pages/Layout";
 const App = () => {
   return (
     <React.Fragment>
-      <h1 className="text-center text-6xl text-pink-900">TRH APP</h1>
+      <Layout />
     </React.Fragment>
   );
 };
