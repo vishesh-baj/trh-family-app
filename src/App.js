@@ -1,10 +1,9 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "./pages/Layout";
+import LandingPage from "./pages/LandingPage";
 const App = () => {
   return (
     <React.Fragment>
-      <Layout />
+      <LandingPage />
     </React.Fragment>
   );
 };

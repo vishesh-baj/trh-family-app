@@ -1,0 +1,92 @@
+TheRapidhire Employee Dashboard
+1. Header for all pages.
+    Recommendations: -
+    Use company logo and Logout button on right side of navbar.
+
+2. Footer for all pages.
+    Recommendation: -
+    use copyrights for and company invention year.
+
+3. User(Admin) can login with email and password
+    Recommendations: - 
+      Login form with input fileds of username and password.
+
+4. Dashboard for all Employees.
+    Recommendations: -
+    List should be display with category of team or department using tabs
+    Name and department  
+
+5. Employee details form.
+   Recommendations: -
+   In this section two scenario which given below: 
+   a.  If user click on employee row botton user should be redirect on user details form to fill detail.
+  b. If employee details already filled on button click user should redirect profile detail page.
+ Note: user can update their profile details.
+
+6. Profile form.
+    Recommendations: 
+   Form filds
+    1. First Name
+    2. Last Name
+    3. Date of bitrth
+    4. Father firstName
+    5. Father lastName
+    6. Mother Name
+    7. Contact no.
+    8. Emergency Contact No.
+    9. Married status
+    10. Local Address
+    11. City / Town
+   12. State
+   13. Pincode
+   14. Permanent Address
+   15. Aadhar No (Unique)
+   16. Any other identity
+   17. Department
+   18. Joining date
+   19. Work Experience
+   20. Higher Qualification
+   21. Blood group
+   22. profile picture
+
+Note:  Submit Button should after form.
+
+
+
+
+
+Company Name - Disha Hellp and Health Care Services
+Company moto/line - Mai Disha hu 
+
+Services - 
+1. Free Counceling for below poverty line section, 
+    a. Hospitals affiliated with - 
+        i. DNS Hospital 
+        ii. Universal Hospital and care center 
+        iii. Laxmi Memorial Hospital 
+        iv. Jyoti Hospital 
+        v. Barrod Hospital 
+
+2. Disease we Cover-
+Heart,Haddi(check translation to english), Cancer, Neurology, urology,ENT,Gynic,psychectric, Addiction relief, Stomach Diseases
+
+3. Private Service- 
+Normal Pateint Councelling - 500Rs/Session 
+
+
+Portfolio- 
+1. 22 Years of Expereince in the field 
+2. 3000 Heart Operations Performed 
+3. Non-profit Org helping underprivilaged in medical emergencies
+
+Contact - 
+Name: Mr. Vijay Agrawal 
+Email; vijayagrawal9999@gmail.com
+Mobile: 9827086545
+
+Name: Mahesh Agrawal 
+Email: LoremIpsum
+Mobile: 9827341677
+
+
+
