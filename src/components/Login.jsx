@@ -1,3 +1,4 @@
+import { nanoid } from "@reduxjs/toolkit";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CustomBtn from "./SubComponents/CustomBtn";
@@ -11,6 +12,11 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const user = {
+      id: nanoid(),
+      email: userName,
+      password: userPassword,
+    };
     navigate("/dashboard");
   };
 
