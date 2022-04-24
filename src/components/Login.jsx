@@ -1,5 +1,5 @@
-import { nanoid } from "@reduxjs/toolkit";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import CustomBtn from "./SubComponents/CustomBtn";
 import CustomInput from "./SubComponents/CustomInput";
 
@@ -7,24 +7,23 @@ const Login = () => {
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
 
+  let navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const user = {
-      id: nanoid(),
-      email: userName,
-      password: userPassword,
-      accountCreated: new Date().toLocaleDateString(),
-    };
+    navigate("/dashboard");
   };
 
   const handleChange = (e) => {
     switch (e.target.type) {
       case "email":
         setUserName(e.target.value);
+
         return userName;
 
       case "password":
         setUserPassword(e.target.value);
+
         return userPassword;
 
       default:
@@ -53,6 +52,7 @@ const Login = () => {
                 labelText="User Name"
                 value={userName}
               />
+
               <CustomInput
                 onChange={handleChange}
                 id="input-01"
@@ -60,6 +60,7 @@ const Login = () => {
                 labelText="Password"
                 value={userPassword}
               />
+              <p className={`text-red-700`}></p>
             </div>
             {/* remember me and forgot password */}
             <div className="mt-8 w-full flex justify-between">
