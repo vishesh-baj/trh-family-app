@@ -4,10 +4,14 @@ import Login from "../components/Login";
 const LandingPage = () => {
   return (
     <div className="flex flex-col md:flex-row w-screen h-screen b">
-      <div className="bg-black w-1/2"></div>
       {/* login div */}
       <div className="w-1/2">
         <Login />
+      </div>
+      <div className="  w-1/2 bg-gradient-to-tr from-indigo-500 to-teal-600">
+        <h1 className="font-primaryFont text-8xl font-bold p-20 mt-56 text-white tracking-wide">
+          Welcome <br /> Back!
+        </h1>
       </div>
     </div>
   );

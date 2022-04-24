@@ -1,8 +1,37 @@
-import React from "react";
+import { nanoid } from "@reduxjs/toolkit";
+import React, { useState } from "react";
 import CustomBtn from "./SubComponents/CustomBtn";
 import CustomInput from "./SubComponents/CustomInput";
 
 const Login = () => {
+  const [userName, setUserName] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const user = {
+      id: nanoid(),
+      email: userName,
+      password: userPassword,
+      accountCreated: new Date().toLocaleDateString(),
+    };
+  };
+
+  const handleChange = (e) => {
+    switch (e.target.type) {
+      case "email":
+        setUserName(e.target.value);
+        return userName;
+
+      case "password":
+        setUserPassword(e.target.value);
+        return userPassword;
+
+      default:
+        break;
+    }
+  };
+
   return (
     <div className="container">
       <div className=" p-20 flex flex-col  ">
@@ -14,34 +43,48 @@ const Login = () => {
               <br /> account.
             </p>
           </div>
-          {/* login inputs */}
-          <div className="mt-8">
-            <CustomInput id="input-01" type="email" labelText="User Name" />
-            <CustomInput id="input-01" type="password" labelText="Password" />
-          </div>
-          {/* remember me and forgot password */}
-          <div className="mt-8 w-full flex justify-between">
-            <div>
-              <input
-                className="accent-indigo-500 text-lg"
-                id="remember-me-checkbox"
-                type="checkbox"
+          <form onSubmit={handleSubmit}>
+            {/* login inputs */}
+            <div className="mt-8">
+              <CustomInput
+                onChange={handleChange}
+                id="input-01"
+                type="email"
+                labelText="User Name"
+                value={userName}
               />
-              <label
-                htmlFor="remember-me-checkbox"
-                className="font-semibold ml-2"
-              >
-                Remember Me
-              </label>
+              <CustomInput
+                onChange={handleChange}
+                id="input-01"
+                type="password"
+                labelText="Password"
+                value={userPassword}
+              />
             </div>
-            <div className="text-indigo-300 cursor-pointer">
-              Forgot Password?
+            {/* remember me and forgot password */}
+            <div className="mt-8 w-full flex justify-between">
+              <div>
+                <input
+                  className="accent-indigo-500 text-lg"
+                  id="remember-me-checkbox"
+                  type="checkbox"
+                />
+                <label
+                  htmlFor="remember-me-checkbox"
+                  className="font-semibold ml-2"
+                >
+                  Remember Me
+                </label>
+              </div>
+              <div className="text-indigo-300 cursor-pointer">
+                Forgot Password?
+              </div>
             </div>
-          </div>
-          {/* login button */}
-          <div className="mt-8">
-            <CustomBtn btnText="Login" />
-          </div>
+            {/* login button */}
+            <div className="mt-8">
+              <CustomBtn btnText="Login" />
+            </div>
+          </form>
 
           {/* New user Sign in */}
           {/* <div className="pt-8">
