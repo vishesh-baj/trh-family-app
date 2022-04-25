@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getLoginData } from "../features/user/UserSlice";
-
 const LandingPage = () => {
   const [userData, setUserData] = useState({
     email: "",
