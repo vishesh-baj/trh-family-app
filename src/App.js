@@ -10,7 +10,8 @@ import Footer from "./components/Footer";
 const App = () => {
   return (
     <React.Fragment>
-      {/* <Router>
+      <Router>
+        {/* Navbar */}
         <Navbar />
 
         <Routes>
@@ -18,9 +19,10 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
+
         <Footer />
-      </Router> */}
-      <Dashboard />
+        {/* Footer */}
+      </Router>
     </React.Fragment>
   );
 };
