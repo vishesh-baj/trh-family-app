@@ -1,24 +1,98 @@
-import React from "react";
+import { useState } from "react";
+import { Tab } from "@headlessui/react";
+import { rolesHR, rolesDeveloper, rolesSales } from "../db/roles";
 
-const Tabs = () => {
-  // ! Need to change colors for dark mode for text, as currently its white
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+const NewTabs = () => {
+  let [categories] = useState({
+    HR: rolesHR,
+    Developers: rolesDeveloper,
+    Sales: rolesSales,
+  });
+
   return (
-    <div className="flex justify-center">
-      <div className="flex  border-b border-gray-200 dark:border-gray-700">
-        <button className="h-10 px-4 py-2 -mb-px text-sm text-center text-blue-600 bg-transparent border-b-2 border-blue-500 sm:text-base dark:border-blue-400 dark:text-blue-300 whitespace-nowrap focus:outline-none">
-          Profile
-        </button>
+    <div className="w-auto px-2 py-10 sm:px-0">
+      <Tab.Group>
+        <Tab.List className="flex p-1 mx-28 space-x-1 bg-gray-500 rounded-xl">
+          {Object.keys(categories).map((category) => (
+            <Tab
+              key={category}
+              className={({ selected }) =>
+                classNames(
+                  "tab ",
+                  selected
+                    ? "bg-white shadow"
+                    : "text-blue-100 hover:bg-white/[0.12] hover:text-white"
+                )
+              }
+            >
+              {category}
+            </Tab>
+          ))}
+        </Tab.List>
 
-        <button className="h-10 px-4 py-2 -mb-px text-sm text-center text-gray-700 bg-transparent border-b-2 border-transparent sm:text-base dark:text-white whitespace-nowrap cursor-base focus:outline-none hover:border-gray-400">
-          Account
-        </button>
+        {/* _____________________ */}
 
-        <button className="h-10 px-4 py-2 -mb-px text-sm text-center text-gray-700 bg-transparent border-b-2 border-transparent sm:text-base dark:text-white whitespace-nowrap cursor-base focus:outline-none hover:border-gray-400">
-          Notification
-        </button>
-      </div>
+        <Tab.Panels className="mt-5 px-5">
+          {Object.values(categories).map((posts, idx) => (
+            <Tab.Panel
+              key={idx}
+              className={classNames(
+                "bg-white rounded-xl p-3",
+                "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60"
+              )}
+            >
+              <ul className="px-5">
+                {posts.map((post) => (
+                  <li
+                    key={post.id}
+                    className="relative m-5 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-300 hover:scale-105 transform ease-in-out flex justify-between p-3 rounded-md hover:bg-coolGray-100"
+                  >
+                    <div>
+                      <h3 className="text-sm font-medium leading-5">
+                        {post.first_name} {post.last_name}
+                      </h3>
+
+                      <ul className="flex mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
+                        <li>
+                          <em>Role:</em> {post.role}
+                        </li>
+                        <li>&middot;</li>
+                        <li>
+                          <em>Primary Contact:</em> {post.contact_no}
+                        </li>
+                        <li>&middot;</li>
+                      </ul>
+                    </div>
+
+                    <div className=" px-10 flex gap-10">
+                      <button className="bg-lime-500 text-white font-semibold px-3 py-2 rounded-lg">
+                        Edit
+                      </button>
+                      <button className="bg-pink-500 text-white font-semibold px-3 py-2 rounded-lg">
+                        Delete
+                      </button>
+                    </div>
+
+                    <a
+                      href="/"
+                      className={classNames(
+                        "absolute inset-0 rounded-md",
+                        "focus:z-10 focus:outline-none focus:ring-2 ring-blue-400"
+                      )}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </Tab.Panel>
+          ))}
+        </Tab.Panels>
+      </Tab.Group>
     </div>
   );
 };
 
-export default Tabs;
+export default NewTabs;
