@@ -1,16 +1,27 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { getLoginData } from "../features/user/UserSlice";
 
 const LandingPage = () => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  // * Handling submit trigger for  form submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(userData);
+    // ! Validating Form Inputs not yet done
+
+    // * Dispatching to store
+    dispatch(getLoginData(userData));
+    navigate("/dashboard");
   };
 
+  // * Handling event change for inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
