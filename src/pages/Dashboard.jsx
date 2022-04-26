@@ -6,7 +6,7 @@ const Dashboard = () => {
   const [isTrue, setIsTrue] = useState(false);
 
   return (
-    <div className="flex ">
+    <div className="flex mt-14 ">
       <Sidebar />
       <DashboardView />
     </div>
