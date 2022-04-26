@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Form from "./components/Form";
 import { Provider } from "react-redux";
+import UserDetails from "./pages/UserDetails";
 
 const App = () => {
   return (
@@ -21,7 +22,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/new-entry" element={<Form />} />
+            {/* <Route path="/new-entry" element={<Form />} /> */}
+            <Route path="/user/1" element={<UserDetails />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
 

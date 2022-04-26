@@ -1,21 +1,25 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getLoginData } from "../features/user/UserSlice";
+
 const LandingPage = () => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
   const dispatch = useDispatch();
+  const darkEnabled = useSelector((state) => state.darkMode);
   const navigate = useNavigate();
 
   // * Handling submit trigger for  form submit
   const handleSubmit = (e) => {
     e.preventDefault();
+
     // ! Validating Form Inputs not yet done
 
-    // * Dispatching to store
+    // * Dispatching to store login details
+
     dispatch(getLoginData(userData));
     navigate("/dashboard");
   };

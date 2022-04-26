@@ -9,19 +9,18 @@ const Sidebar = () => {
   return (
     <React.Fragment>
       {/* Hamburger Menu   */}
-
       <svg
         onClick={() => setIsOpen(!isOpen)}
         xmlns="http://www.w3.org/2000/svg"
-        className="h-8 w-8 absolute ml-5 -mt-8  md:hidden z-40"
+        className="h-8 w-8 absolute ml-5 -mt-8  md:hidden z-40 dark:text-white"
         fill="none"
         viewBox="0 0 24 24"
-        stroke="white"
-        stroke-width="2"
+        stroke="black"
+        strokeWidth="2"
       >
         <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           d="M4 6h16M4 12h16M4 18h16"
         />
       </svg>
@@ -40,11 +39,11 @@ const Sidebar = () => {
             fill="none"
             viewBox="0 0 24 24"
             stroke="white"
-            stroke-width="2"
+            strokeWidth="2"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M6 18L18 6M6 6l12 12"
             />
           </svg>
@@ -70,36 +69,7 @@ const Sidebar = () => {
           <div className="flex flex-col justify-between flex-1 mt-6">
             <nav>
               {/* Sidebar links */}
-              <Link to="/new-entry">
-                <a
-                  className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
-                  href="/new-entry"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
 
-                  <span className="mx-4 font-medium">New</span>
-                </a>
-              </Link>
               <Link to="/dashboard">
                 <a
                   className="flex items-center px-4 py-2 text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-200"

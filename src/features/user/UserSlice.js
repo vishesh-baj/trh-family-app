@@ -11,11 +11,9 @@ const userSlice = createSlice({
     logout: (state) => {
       state = [];
     },
-    selectedUser: (state, action) => {
-      state.push(action.payload);
-    },
   },
 });
-export const { getLoginData, selectedUser, logout } = userSlice.actions;
+
+export const { getLoginData, logout } = userSlice.actions;
 
 export default userSlice.reducer;
