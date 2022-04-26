@@ -7,7 +7,7 @@ const SelectedUserSlice = createSlice({
   initialState,
   reducers: {
     getSelectedUser: (state, action) => {
-      state.push(action.payload);
+      return (state = action.payload);
     },
   },
 });
