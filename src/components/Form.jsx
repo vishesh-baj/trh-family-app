@@ -4,9 +4,10 @@ import FormInput from "./SubComponents/FormInput";
 
 const Form = () => {
   return (
-    <div className="flex">
+    <div className="flex mt-14">
       <Sidebar />
-      <section className="w-full flex-1 p-6 mx-auto bg-white shadow-md dark:bg-gray-800">
+
+      <section className="w-full md:ml-64 flex-1 p-6 mx-auto bg-white shadow-md dark:bg-gray-800 mt-6">
         <h1 className="text-2xl font-semibold text-gray-700 capitalize dark:text-white">
           Create New User
         </h1>

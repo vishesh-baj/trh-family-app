@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import store from "./app/store";
 import LandingPage from "./pages/LandingPage";
 
 import Dashboard from "./pages/Dashboard";
@@ -8,7 +9,6 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Form from "./components/Form";
 import { Provider } from "react-redux";
-import store from "./app/store";
 
 const App = () => {
   return (

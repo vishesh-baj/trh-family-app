@@ -7,8 +7,8 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="relative">
-      <nav className="bg-white w-full shadow dark:bg-gray-800 z-20 top-0 left-0 right-0 fixed">
+    <div className="relative ">
+      <nav className="bg-white w-full shadow dark:bg-gray-800 opacity-95 z-20 top-0 left-0 right-0 fixed">
         <div className="container mx-auto py-5 px-5 flex justify-between ">
           {/* Company Logo */}
           <div>
