@@ -1,12 +1,10 @@
 import React from "react";
-import Form from "./Form";
-import NewTabs from "./Tabs";
+import Tabs from "./Tabs";
 
 const DashboardView = () => {
   return (
     <div className="flex-1">
-      <NewTabs />
-      <Form />
+      <Tabs />
     </div>
   );
 };

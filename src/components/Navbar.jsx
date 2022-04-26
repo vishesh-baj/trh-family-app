@@ -2,13 +2,12 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../features/user/UserSlice";
-
 const Navbar = () => {
   const userLogged = useSelector((state) => state.userLogged.length);
   const dispatch = useDispatch();
 
   return (
-    <nav className="bg-white shadow dark:bg-gray-800 z-30">
+    <nav className="bg-white w-full shadow dark:bg-gray-800 z-30">
       <div className="container mx-auto py-5 px-5 flex justify-between ">
         {/* Company Logo */}
         <div>

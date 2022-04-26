@@ -1,12 +1,12 @@
 import React from "react";
 
-const FormInput = ({ children }) => {
+const FormInput = ({ id, type, children }) => {
   return (
     <div>
-      <label className="text-gray-700 dark:text-gray-200" for="username">
+      <label className="text-gray-700 dark:text-gray-200" for={id}>
         {children}
       </label>
-      <input id="username" type="text" className="form-input" />
+      <input id={id} type={type} className="form-input" />
     </div>
   );
 };

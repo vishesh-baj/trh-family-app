@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Tab } from "@headlessui/react";
 import { rolesHR, rolesDeveloper, rolesSales } from "../db/roles";
+import { Link } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const NewTabs = () => {
+const Tabs = () => {
   let [categories] = useState({
     HR: rolesHR,
     Developers: rolesDeveloper,
@@ -16,13 +17,13 @@ const NewTabs = () => {
   return (
     <div className="w-auto px-2 py-10 sm:px-0">
       <Tab.Group>
-        <Tab.List className="flex p-1 mx-28 space-x-1 bg-gray-500 rounded-xl">
+        <Tab.List className="flex flex-col sm:flex-row p-1 mx-28 space-x-1 bg-gray-500 rounded-xl">
           {Object.keys(categories).map((category) => (
             <Tab
               key={category}
               className={({ selected }) =>
                 classNames(
-                  "tab ",
+                  "tab",
                   selected
                     ? "bg-white shadow"
                     : "text-blue-100 hover:bg-white/[0.12] hover:text-white"
@@ -45,11 +46,11 @@ const NewTabs = () => {
                 "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60"
               )}
             >
-              <ul className="px-5">
+              <ul className="px-5  flex-wrap">
                 {posts.map((post) => (
                   <li
                     key={post.id}
-                    className="relative m-5 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-300 hover:scale-105 transform ease-in-out flex justify-between p-3 rounded-md hover:bg-coolGray-100"
+                    className="relative m-5 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-300 hover:scale-105 transform ease-in-out flex-col md:flex-row justify-between p-3 rounded-md hover:bg-coolGray-100 cursor-pointer"
                   >
                     <div>
                       <h3 className="text-sm font-medium leading-5">
@@ -68,22 +69,28 @@ const NewTabs = () => {
                       </ul>
                     </div>
 
-                    <div className=" px-10 flex gap-10">
-                      <button className="bg-lime-500 text-white font-semibold px-3 py-2 rounded-lg">
-                        Edit
-                      </button>
+                    <div className=" flex gap-10 mt-5 ">
+                      <Link to="/new-entry">
+                        <button
+                          onClick={(e) => console.log(post)}
+                          className="bg-lime-500 text-white font-semibold px-3 py-2 rounded-lg"
+                        >
+                          Edit
+                        </button>
+                      </Link>
+
                       <button className="bg-pink-500 text-white font-semibold px-3 py-2 rounded-lg">
                         Delete
                       </button>
                     </div>
 
-                    <a
+                    {/* <a
                       href="/"
                       className={classNames(
                         "absolute inset-0 rounded-md",
                         "focus:z-10 focus:outline-none focus:ring-2 ring-blue-400"
                       )}
-                    />
+                    /> */}
                   </li>
                 ))}
               </ul>
@@ -95,4 +102,4 @@ const NewTabs = () => {
   );
 };
 
-export default NewTabs;
+export default Tabs;
