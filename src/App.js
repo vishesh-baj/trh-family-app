@@ -25,8 +25,8 @@ const App = () => {
             <Route path="*" element={<ErrorPage />} />
           </Routes>
 
-          <Footer />
           {/* Footer */}
+          <Footer />
         </Router>
       </Provider>
     </React.Fragment>

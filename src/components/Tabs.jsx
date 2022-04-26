@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Tab } from "@headlessui/react";
 import { rolesHR, rolesDeveloper, rolesSales } from "../db/roles";
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -16,7 +15,8 @@ const Tabs = () => {
   return (
     <div className="w-auto  px-2 py-10 sm:px-0">
       <Tab.Group>
-        {/* TABS MENU */}
+        {/* _____________________ TAB MENUS */}
+
         <Tab.List className="flex justify-center mx-5  p-1  space-x-1 bg-black  text-white rounded-xl">
           {Object.keys(categories).map((category) => (
             <Tab
@@ -74,14 +74,6 @@ const Tabs = () => {
                         View Details
                       </button>
                     </div>
-
-                    {/* <a
-                      href="/"
-                      className={classNames(
-                        "absolute inset-0 rounded-md",
-                        "focus:z-10 focus:outline-none focus:ring-2 ring-blue-400"
-                      )}
-                    /> */}
                   </li>
                 ))}
               </ul>
