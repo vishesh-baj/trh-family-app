@@ -13,7 +13,7 @@ const Navbar = () => {
           {/* Company Logo */}
           <div>
             <a
-              className="text-xl font-bold text-gray-800 transition-colors duration-200 transform dark:text-white lg:text-2xl hover:text-gray-700 dark:hover:text-gray-300"
+              className="text-xl font-bold text-gray-800 transition-colors duration-200 transform dark:text-white lg:text-2xl hover:text-gray-700 dark:hover:text-gray-300 hidden md:block"
               href="/"
             >
               The Rapid Hire

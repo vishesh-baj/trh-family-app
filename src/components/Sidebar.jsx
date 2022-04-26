@@ -8,13 +8,15 @@ const Sidebar = () => {
 
   return (
     <React.Fragment>
+      {/* Hamburger Menu   */}
+
       <svg
         onClick={() => setIsOpen(!isOpen)}
         xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6 absolute ml-5 mt-5 md:hidden"
+        className="h-8 w-8 absolute ml-5 -mt-8  md:hidden z-40"
         fill="none"
         viewBox="0 0 24 24"
-        stroke="currentColor"
+        stroke="white"
         stroke-width="2"
       >
         <path
@@ -24,11 +26,11 @@ const Sidebar = () => {
         />
       </svg>
 
-      <div className="relative">
+      <div className="relative ">
         <div
           className={`${
             !isOpen && "hidden"
-          } z-10  fixed md:fixed md:flex md:flex-col w-64 h-screen py-8 bg-white border-r dark:bg-gray-800 dark:border-gray-600`}
+          } z-10  fixed md:fixed md:flex md:flex-col w-64 h-screen py-8 bg-white border-r dark:bg-gray-800 dark:border-gray-600 bg-gradient-to-tl from-teal-500`}
         >
           {/* Cancel button */}
           <svg
