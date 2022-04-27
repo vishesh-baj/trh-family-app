@@ -14,16 +14,17 @@ const Tabs = () => {
   //   Developers: rolesDeveloper,
   //   Sales: rolesSales,
   // });
+
   const userData = useSelector((state) => state.userData);
   const [userJSONData, setUserJSONData] = useState(userData);
 
   const dispatch = useDispatch();
   return (
-    <div className="w-auto  px-2 py-10 sm:px-0">
+    <div className="w-auto   py-10 sm:px-0">
       <Tab.Group>
         {/* _____________________ TAB MENUS */}
 
-        <Tab.List className="flex justify-center mx-5  p-1  space-x-1 bg-black  text-white rounded-xl">
+        <Tab.List className="flex justify-center mx-5  p-1  space-x-1 dark:bg-gray-800 bg-teal-200  text-white rounded-xl">
           {Object.keys(userJSONData).map((category) => (
             <Tab
               key={category}
@@ -31,8 +32,8 @@ const Tabs = () => {
                 classNames(
                   "tab transition duration-500 ease-in-out",
                   selected
-                    ? "bg-teal-600 shadow"
-                    : "text-blue-100 hover:bg-white/[0.12] hover:text-teal-200"
+                    ? "bg-white dark:bg-teal-600 text-teal-200 shadow"
+                    : "text-blue-100 hover:bg-white/[0.12] hover:text-teal-100"
                 )
               }
             >
@@ -52,7 +53,7 @@ const Tabs = () => {
                 "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60"
               )}
             >
-              <ul className="  flex-wrap">
+              <ul className="  flex-wrap dark:bg-gray-700 bg-teal-50">
                 {posts.map((post) => (
                   <Link
                     onClick={() => dispatch(getSelectedUser(post))}
@@ -60,7 +61,7 @@ const Tabs = () => {
                   >
                     <li
                       key={post.id}
-                      className="relative my-5 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-300 hover:scale-105 transform ease-in-out flex-col flex md:flex-row  justify-between px-3 py-3 rounded-md hover:bg-coolGray-100 cursor-pointer"
+                      className="relative my-5 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-300 hover:scale-105 transform ease-in-out flex-col flex md:flex-row  justify-between px-3  py-3 rounded-md hover:bg-coolGray-100 cursor-pointer dark:bg-gray-800 dark:text-gray-50 "
                     >
                       <div>
                         <h3 className="text-sm font-medium leading-5">

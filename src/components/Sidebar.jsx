@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const userData = useSelector((state) => state.userLogged);
+  const user = JSON.parse(localStorage.getItem("user"));
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <React.Fragment>
       {/* Hamburger Menu   */}
@@ -62,7 +62,7 @@ const Sidebar = () => {
               Vishesh Bajpayee
             </h4>
             <p className="mx-2 mt-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:underline">
-              {userData[0].email}
+              {user.email}
             </p>
           </div>
 

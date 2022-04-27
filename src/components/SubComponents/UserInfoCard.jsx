@@ -3,7 +3,7 @@ import React from "react";
 const UserInfoCard = ({ user }) => {
   return (
     <React.Fragment>
-      <div className="max-w-5xl px-8 py-4 mx-auto mt-16 bg-white rounded-lg shadow-lg h-screen dark:bg-gray-800">
+      <div className="max-w-5xl flex-1 px-8 py-4 mx-auto mt-16 bg-white rounded-lg shadow-lg h-[70vh] my-10 dark:bg-gray-800">
         <div className="flex justify-center -mt-16 md:justify-end">
           <img
             className="object-cover w-20 h-20 border-2 border-blue-500 rounded-full dark:border-blue-400"
@@ -16,7 +16,7 @@ const UserInfoCard = ({ user }) => {
           User Details
         </h2>
 
-        <div className="flex gap-10 justify-between w-1/2 ">
+        <div className="flex gap-10 justify-between md:w-1/2 ">
           <p className="mt-2 font-semibold text-gray-600 dark:text-gray-200">
             Full Name :
           </p>
@@ -25,7 +25,7 @@ const UserInfoCard = ({ user }) => {
           </p>
         </div>
 
-        <div className="flex justify-between gap-10 w-1/2">
+        <div className="flex justify-between gap-10 md:w-1/2">
           <p className="mt-2 font-semibold text-gray-600 dark:text-gray-200">
             Role :
           </p>
@@ -33,7 +33,7 @@ const UserInfoCard = ({ user }) => {
           <p className="mt-2 text-gray-600 dark:text-gray-200">{user.role}</p>
         </div>
 
-        <div className="flex justify-between gap-10 w-1/2">
+        <div className="flex justify-between gap-10 md:w-1/2">
           <p className="mt-2 font-semibold text-gray-600 dark:text-gray-200">
             Contact Number :
           </p>

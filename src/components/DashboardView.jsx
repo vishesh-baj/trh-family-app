@@ -3,7 +3,7 @@ import Tabs from "./Tabs";
 
 const DashboardView = () => {
   return (
-    <div className="flex-1 md:ml-64">
+    <div className="flex-1 mt-6 md:ml-64 bg-teal-50 dark:bg-gray-700">
       <Tabs />
     </div>
   );
