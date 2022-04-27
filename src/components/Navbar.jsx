@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { triggerDarkMode } from "../features/user/DarkMode";
 import { logout } from "../features/user/UserSlice";
 
@@ -8,7 +8,9 @@ const Navbar = () => {
   const userLogged = useSelector((state) => state.userLogged.length);
   const darkMode = useSelector((state) => state.darkMode);
   const dispatch = useDispatch();
-  const user = localStorage.getItem("user");
+  const user = JSON.parse(localStorage.getItem("user"));
+  const navigate = useNavigate();
+
   return (
     <div className="relative ">
       <nav className="bg-white w-full shadow dark:bg-gray-800 opacity-95 z-20 top-0 left-0 right-0 fixed">
@@ -49,13 +51,14 @@ const Navbar = () => {
             <svg
               onClick={() => {
                 dispatch(triggerDarkMode());
+                localStorage.removeItem("user");
               }}
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 cursor-pointer hover:text-teal-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              stroke-width="2"
+              strokeWidth="2"
             >
               <path
                 strokeLinecap="round"
@@ -67,19 +70,21 @@ const Navbar = () => {
 
           {/*  Logout button, handling logging out of the dashboard */}
 
-          <div className="flex  justify-between  ">
-            {userLogged ? (
-              <Link to="/">
-                <button
-                  onClick={dispatch(logout())}
-                  type="button"
-                  className="px-3 py-2 bg-black text-white dark:bg-teal-500 font-semibold rounded-lg hover:bg-blue-500 hover:text-white"
-                  aria-label="toggle menu"
-                >
-                  Logout
-                </button>
-              </Link>
-            ) : null}
+          <div className="flex  justify-between">
+            {user && (
+              <button
+                onClick={() => {
+                  // dispatch(logout());
+                  localStorage.clear();
+                  navigate("/");
+                }}
+                type="button"
+                className="px-3 py-2 bg-teal-200 text-black dark:bg-teal-500 font-semibold rounded-lg hover:bg-teal-500 hover:text-white"
+                aria-label="toggle menu"
+              >
+                Logout
+              </button>
+            )}
           </div>
         </div>
       </nav>
