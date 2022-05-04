@@ -31,9 +31,9 @@ const Tabs = () => {
               key={category}
               className={({ selected }) =>
                 classNames(
-                  "tab transition duration-500 ease-in-out",
+                  "tab transition duration-500 ease-in-out ",
                   selected
-                    ? "bg-white dark:bg-teal-600 text-teal-200 shadow"
+                    ? "bg-white dark:bg-teal-600 text-teal-200 shadow animate-bounce"
                     : "text-blue-100 hover:bg-white/[0.12] hover:text-teal-100"
                 )
               }
