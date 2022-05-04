@@ -1,7 +1,5 @@
 import React from "react";
-
 import store from "./app/store";
-
 import Layout from "./pages/Layout";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";

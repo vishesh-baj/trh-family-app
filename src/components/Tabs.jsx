@@ -24,7 +24,7 @@ const Tabs = () => {
       <Tab.Group>
         {/* _____________________ TAB MENUS */}
 
-        <Tab.List className="flex justify-center mx-5  p-1  space-x-1 dark:bg-gray-800 bg-teal-200  text-white rounded-xl">
+        <Tab.List className="flex justify-center mx-10  p-1  space-x-1 dark:bg-gray-800 bg-teal-200  text-white rounded-xl">
           {Object.keys(userData).map((category) => (
             <Tab
               key={category}

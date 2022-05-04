@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { triggerDarkMode } from "../app/helpers";
 import ProtectedRoute from "../routes/ProtectedRoute";
+import AddEmployee from "./AddEmployee";
 // ? Layout for the application to specify what exacly need to be renderd in the app component
 
 const Layout = ({ children }) => {
@@ -43,6 +44,8 @@ const Layout = ({ children }) => {
               </ProtectedRoute>
             }
           />
+
+          <Route path="/add-employee" element={<AddEmployee />} />
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>
