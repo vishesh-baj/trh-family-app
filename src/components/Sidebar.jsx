@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
-  const userData = useSelector((state) => state.userLogged);
+  // const userData = useSelector((state) => state.userLogged);
   // const user = JSON.parse(localStorage.getItem("user"));
   const [isOpen, setIsOpen] = useState(false);
 
