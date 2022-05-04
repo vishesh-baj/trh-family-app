@@ -1,42 +1,27 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, createDispatchHook, useDispatch } from "react-redux";
+// import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
+import { toggleSidebar } from "../features/nav/NavbarSlice";
 const Sidebar = () => {
-  const userData = useSelector((state) => state.userLogged);
-  // const user = JSON.parse(localStorage.getItem("user"));
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  const toggle = useSelector((state) => state.sidebarToggle);
 
   return (
     <React.Fragment>
-      {/* Hamburger Menu   */}
-      <svg
-        onClick={() => setIsOpen(!isOpen)}
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-8 w-8 absolute ml-5 -mt-8   md:hidden z-40 dark:text-white"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="teal"
-        strokeWidth="2"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M4 6h16M4 12h16M4 18h16"
-        />
-      </svg>
-
       <div className="relative mt-6">
         <div
           className={`${
-            !isOpen && "hidden"
+            !toggle && "hidden"
           } z-10  fixed md:fixed md:flex md:flex-col w-64 h-screen py-8 bg-white border-r dark:bg-gray-800 dark:border-gray-600 bg-gradient-to-tl from-teal-500`}
         >
           {/* specific Cartlane redirection  */}
 
           {/* Cancel button */}
           <svg
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => dispatch(toggleSidebar())}
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 absolute right-5 md:hidden "
             fill="none"

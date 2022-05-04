@@ -1,26 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toggleSidebar } from "../features/nav/NavbarSlice";
 import { triggerDarkMode } from "../features/user/DarkMode";
-
 const Navbar = () => {
   const darkMode = useSelector((state) => state.darkMode);
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="relative ">
       <nav className="bg-white w-full shadow dark:bg-gray-800 opacity-95 z-20 top-0 left-0 right-0 fixed">
-        <div className="container mx-auto py-5 px-5 flex justify-between ">
+        <div className=" px-5 mx-auto py-5  flex justify-between ">
+          {/* Hamburger Menu   */}
+          <svg
+            // onClick={() => setIsOpen(!isOpen)}
+            onClick={() => dispatch(toggleSidebar())}
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-8 w-8  md:hidden z-40 dark:text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="teal"
+            strokeWidth="2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
           {/* Company Logo */}
           <div>
-            <a
+            <Link
               className="text-xl font-bold text-gray-800 transition-colors duration-200 transform dark:text-white lg:text-2xl hover:text-gray-700 dark:hover:text-gray-300 hidden md:block"
-              href="/"
+              to="/dashboard"
             >
-              The Rapid Hire
-            </a>
+              THE RAPID HIRE
+            </Link>
           </div>
 
           {!darkMode && (

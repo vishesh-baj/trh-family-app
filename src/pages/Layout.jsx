@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { triggerDarkMode } from "../app/helpers";
 import ProtectedRoute from "../routes/ProtectedRoute";
-// Layout for the application to specify what exacly need to be renderd in the app component
+// ? Layout for the application to specify what exacly need to be renderd in the app component
 
 const Layout = ({ children }) => {
   const currentUser = useSelector((state) => state.selectedUser);
