@@ -1,33 +1,74 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
-import FormInput from "./SubComponents/FormInput";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const Form = () => {
-  const [submittedData, setSubmittedData] = useState({
-    firstName: "",
-    lastName: "",
-    dateOfBirth: "",
-    fatherFirstName: "",
-    fatherLastName: "",
-    motherName: "",
-    contactNo: null,
-    emergencyContactNo: null,
-    marriedStatus: "",
-    localAddress: "",
-    cityOrTown: "",
-    state: "",
-    pinCode: null,
-    permanentAddress: "",
-    email: "",
-    adhaarNo: null,
-    anyOtherIdenty: "",
-    role: "",
-    joiningData: "",
-    workExperience: "",
-    higherQualification: "",
-    bloodGroup: "",
-    profile_picture: "",
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      // dateOfBirth: "",
+      // fatherFirstName: "",
+      // fatherLastName: "",
+      // motherName: "",
+      // contactNo: null,
+      // emergencyContactNo: null,
+      // marriedStatus: "",
+      // localAddress: "",
+      // cityOrTown: "",
+      // state: "",
+      // pinCode: null,
+      // permanentAddress: "",
+      // email: "",
+      // adhaarNo: null,
+      // anyOtherIdenty: "",
+      // role: "",
+      // joiningData: "",
+      // workExperience: "",
+      // higherQualification: "",
+      // bloodGroup: "",
+      // profile_picture: "",
+    },
+
+    validationSchema: Yup.object({
+      firstName: Yup.string()
+        .max(25, "Max characters 25")
+        .required("Required"),
+      lastName: Yup.string().max(25, "Max Characters 25"),
+    }),
+    onSubmit: (values) => {
+      console.log(values);
+    },
   });
+
+  // const [submittedData, setSubmittedData] = useState({
+  //   firstName: "",
+  //   lastName: "",
+  //   dateOfBirth: "",
+  //   fatherFirstName: "",
+  //   fatherLastName: "",
+  //   motherName: "",
+  //   contactNo: null,
+  //   emergencyContactNo: null,
+  //   marriedStatus: "",
+  //   localAddress: "",
+  //   cityOrTown: "",
+  //   state: "",
+  //   pinCode: null,
+  //   permanentAddress: "",
+  //   email: "",
+  //   adhaarNo: null,
+  //   anyOtherIdenty: "",
+  //   role: "",
+  //   joiningData: "",
+  //   workExperience: "",
+  //   higherQualification: "",
+  //   bloodGroup: "",
+  //   profile_picture: "",
+  // });
+  console.log(formik.values);
 
   return (
     <div className="flex mt-14">
@@ -38,50 +79,63 @@ const Form = () => {
           Create New User
         </h1>
 
-        <form>
-          <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2 ">
-            <FormInput type="text" name="firstName">
+        <form
+          onSubmit={formik.handleSubmit}
+          className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2 "
+        >
+          {/* First Name */}
+          <div>
+            <label className="text-gray-700 dark:text-gray-200" htmlFor="input">
               First Name
-            </FormInput>
-            <FormInput type="text" name="lastname">
-              Last Name
-            </FormInput>
-            <FormInput type="date" name="department">
-              Date of Birth
-            </FormInput>
-            <FormInput type="type" name="father-name-first">
-              Father First Name
-            </FormInput>
-            <FormInput name="father-name-last">Father Last Name</FormInput>
-            <FormInput name="mother-name">Mother Name</FormInput>
-            <FormInput type="phone" name="contactnumber">
-              Contact Number
-            </FormInput>
-            <FormInput type="phone" name="emergency-contact-number">
-              Emergency Contact Number
-            </FormInput>
-            <FormInput name="Married">Married Status</FormInput>
-            <FormInput name="Local Address">Local Address</FormInput>
-            <FormInput name="City/Town">City/Town</FormInput>
-            <FormInput name="State">State</FormInput>
-            <FormInput name="PinCode">Pincode</FormInput>
-            <FormInput name="Permanant Address">Permanant Address</FormInput>
-            <FormInput name="Adhaar Card">Adhaar Number</FormInput>
-            <FormInput name="Any other Identy">Any other identity</FormInput>
-            <FormInput name="Department">Department</FormInput>
-            <FormInput type="date" name="Joining Date">
-              Joining Date
-            </FormInput>
-            <FormInput type="number" name="Work Experience">
-              Work Experience
-            </FormInput>
-            <FormInput name="contactnumber">Higher Qualification</FormInput>
-            <FormInput name="contactnumber">Blood Group</FormInput>
-            <FormInput name="contactnumber">Profile Picture</FormInput>
+            </label>
+            <input
+              name="firstName"
+              value={formik.values.firstName}
+              onChange={formik.handleChange}
+              className="form-input"
+              type="text"
+              autoComplete="off"
+            />
+            {formik.errors.firstName ? <p>{formik.errors.firstName}</p> : null}
           </div>
 
+          {/* Last Name */}
+          <div>
+            <label className="text-gray-700 dark:text-gray-200" htmlFor="input">
+              Last Name
+            </label>
+            <input
+              name="lastName"
+              value={formik.values.lastName}
+              onChange={formik.handleChange}
+              className="form-input"
+              type="text"
+              autoComplete="off"
+            />
+          </div>
+
+          {/* EMAIL */}
+
+          <div>
+            <label className="text-gray-700 dark:text-gray-200" htmlFor="input">
+              Email
+            </label>
+            <input
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              className="form-input"
+              type="text"
+              autoComplete="off"
+            />
+          </div>
+
+          {/* SUBMIT BUTTON */}
           <div className="flex justify-center mt-6">
-            <button className="px-6 py-2 leading-5 w-1/2 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+            <button
+              type="submit"
+              className="px-6 py-2 leading-5 w-1/2 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+            >
               Save
             </button>
           </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const UserInfoCard = ({ user }) => {
   return (
@@ -56,12 +57,12 @@ const UserInfoCard = ({ user }) => {
         </div>
 
         <div className="flex justify-end mt-4">
-          <a
-            href="/"
+          <Link
+            to="/add-employee"
             className="text-xl font-medium text-blue-500 dark:text-blue-300"
           >
             Edit Details
-          </a>
+          </Link>
         </div>
       </div>
     </React.Fragment>

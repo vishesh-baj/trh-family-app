@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+<<<<<<< HEAD
 import { Link, useNavigate } from "react-router-dom";
 import { toggleSidebar } from "../features/nav/NavbarSlice";
+=======
+import { Link } from "react-router-dom";
+>>>>>>> parent of 6bb3752 (added routing for logout fixed issue)
 import { triggerDarkMode } from "../features/user/DarkMode";
 const Navbar = () => {
   const darkMode = useSelector((state) => state.darkMode);
   const dispatch = useDispatch();
+<<<<<<< HEAD
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState(false);
 
+=======
+  const user = localStorage.getItem("user");
+>>>>>>> parent of 6bb3752 (added routing for logout fixed issue)
   return (
     <div className="relative ">
       <nav className="bg-white w-full shadow dark:bg-gray-800 opacity-95 z-20 top-0 left-0 right-0 fixed">
@@ -52,7 +60,7 @@ const Navbar = () => {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              strokeWidth="2"
+              stroke-width="2"
             >
               <path
                 strokeLinecap="round"
@@ -64,6 +72,7 @@ const Navbar = () => {
 
           {/*  Logout button, handling logging out of the dashboard */}
 
+<<<<<<< HEAD
           <div className="flex  justify-between">
             {token && (
               <button
@@ -78,6 +87,21 @@ const Navbar = () => {
                 Logout
               </button>
             )}
+=======
+          <div className="flex  justify-between  ">
+            {userLogged ? (
+              <Link to="/">
+                <button
+                  onClick={dispatch(logout())}
+                  type="button"
+                  className="px-3 py-2 bg-black text-white dark:bg-teal-500 font-semibold rounded-lg hover:bg-blue-500 hover:text-white"
+                  aria-label="toggle menu"
+                >
+                  Logout
+                </button>
+              </Link>
+            ) : null}
+>>>>>>> parent of 6bb3752 (added routing for logout fixed issue)
           </div>
         </div>
       </nav>

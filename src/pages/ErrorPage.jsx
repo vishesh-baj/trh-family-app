@@ -1,6 +1,7 @@
 import React from "react";
 
 const ErrorPage = () => {
+<<<<<<< HEAD
   return (
     <React.Fragment>
       <div
@@ -38,6 +39,9 @@ const ErrorPage = () => {
       </div>
     </React.Fragment>
   );
+=======
+  return <div>ErrorPage</div>;
+>>>>>>> parent of 6bb3752 (added routing for logout fixed issue)
 };
 
 export default ErrorPage;
