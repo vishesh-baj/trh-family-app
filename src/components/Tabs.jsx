@@ -55,8 +55,9 @@ const Tabs = () => {
               )}
             >
               <ul className="  flex-wrap dark:bg-gray-700 bg-teal-50">
-                {posts.map((post) => (
+                {posts.map((post, idx) => (
                   <Link
+                    key={idx * 100}
                     onClick={() => dispatch(getSelectedUser(post))}
                     to={`/user/${post.id}`}
                   >
