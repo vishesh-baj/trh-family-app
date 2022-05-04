@@ -1,28 +1,27 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getLoginData } from "../features/user/UserSlice";
-
+import { fakeAuth } from "../app/helpers";
 const LandingPage = () => {
   const [userData, setUserData] = useState({
-    email: "",
-    password: "",
+    email: "admin@therapidhire.com",
+    password: "#Equifax2014",
   });
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  //  Handling submit trigger for  form submit
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    localStorage.setItem("user", JSON.stringify(userData));
+  // *  Handling submit trigger for  form submit
 
-    //  Dispatching to store login details
-    dispatch(getLoginData(userData));
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // login
+    const apiToken = await fakeAuth();
+
+    localStorage.setItem("token", apiToken);
+
     navigate("/dashboard");
   };
 
-  //  Handling event change for inputs
+  // * Handling event change for inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
@@ -62,6 +61,7 @@ const LandingPage = () => {
               <div className="mt-8">
                 {/* FORM */}
                 <form onSubmit={handleSubmit}>
+                  {/* EMAIL  */}
                   <div>
                     <label
                       htmlFor="email"
@@ -79,7 +79,7 @@ const LandingPage = () => {
                       value={userData.email}
                     />
                   </div>
-
+                  {/* PASSWORD */}
                   <div className="mt-6">
                     <div className="flex justify-between mb-2">
                       <label
@@ -106,24 +106,13 @@ const LandingPage = () => {
                       value={userData.password}
                     />
                   </div>
-
+                  {/* SUBMIT BUTTON */}
                   <div className="mt-6">
                     <button type="submit" className="loginBtn">
                       Sign in
                     </button>
                   </div>
                 </form>
-
-                <p className="mt-6 text-sm text-center text-gray-400">
-                  Don&#x27;t have an account yet?{" "}
-                  <a
-                    href="/"
-                    className="text-blue-500 focus:outline-none focus:underline hover:underline"
-                  >
-                    Sign up
-                  </a>
-                  .
-                </p>
               </div>
             </div>
           </div>

@@ -4,18 +4,19 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const userData = useSelector((state) => state.userLogged);
-  const user = JSON.parse(localStorage.getItem("user"));
+  // const user = JSON.parse(localStorage.getItem("user"));
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <React.Fragment>
       {/* Hamburger Menu   */}
       <svg
         onClick={() => setIsOpen(!isOpen)}
         xmlns="http://www.w3.org/2000/svg"
-        className="h-8 w-8 absolute ml-5 -mt-8  md:hidden z-40 dark:text-white"
+        className="h-8 w-8 absolute ml-5 -mt-8   md:hidden z-40 dark:text-white"
         fill="none"
         viewBox="0 0 24 24"
-        stroke="black"
+        stroke="teal"
         strokeWidth="2"
       >
         <path
@@ -31,6 +32,8 @@ const Sidebar = () => {
             !isOpen && "hidden"
           } z-10  fixed md:fixed md:flex md:flex-col w-64 h-screen py-8 bg-white border-r dark:bg-gray-800 dark:border-gray-600 bg-gradient-to-tl from-teal-500`}
         >
+          {/* specific Cartlane redirection  */}
+
           {/* Cancel button */}
           <svg
             onClick={() => setIsOpen(!isOpen)}
@@ -61,9 +64,9 @@ const Sidebar = () => {
             <h4 className="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200 hover:underline">
               Vishesh Bajpayee
             </h4>
-            <p className="mx-2 mt-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:underline">
+            {/* <p className="mx-2 mt-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:underline">
               {user.email}
-            </p>
+            </p> */}
           </div>
 
           <div className="flex flex-col justify-between flex-1 mt-6">

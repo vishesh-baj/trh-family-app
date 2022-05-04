@@ -1,14 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { triggerDarkMode } from "../features/user/DarkMode";
-import { logout } from "../features/user/UserSlice";
 
 const Navbar = () => {
-  const userLogged = useSelector((state) => state.userLogged.length);
   const darkMode = useSelector((state) => state.darkMode);
   const dispatch = useDispatch();
-  const user = JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   return (
@@ -25,33 +23,10 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* MOON SVG */}
-
-          {darkMode && (
-            <svg
-              onClick={() => {
-                dispatch(triggerDarkMode());
-              }}
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-8  w-8 pt-2 dark:text-white  cursor-pointer hover:text-teal-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="black"
-              strokeWidth="2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-              />
-            </svg>
-          )}
-
           {!darkMode && (
             <svg
               onClick={() => {
                 dispatch(triggerDarkMode());
-                localStorage.removeItem("user");
               }}
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 cursor-pointer hover:text-teal-500"
@@ -71,11 +46,10 @@ const Navbar = () => {
           {/*  Logout button, handling logging out of the dashboard */}
 
           <div className="flex  justify-between">
-            {user && (
+            {token && (
               <button
                 onClick={() => {
-                  // dispatch(logout());
-                  localStorage.clear();
+                  localStorage.removeItem("token");
                   navigate("/");
                 }}
                 type="button"

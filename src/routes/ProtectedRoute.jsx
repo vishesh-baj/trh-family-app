@@ -1,8 +1,10 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
-const ProtectedRoute = ({ user, redirectPath = "/", children }) => {
-  if (!user) {
-    return <Navigate to={redirectPath} replace />;
+import { Navigate, useLocation } from "react-router-dom";
+const ProtectedRoute = ({ children }) => {
+  const location = useLocation();
+  const token = localStorage.getItem("token");
+  if (!token) {
+    return <Navigate to="/" replace state={{ from: location }} />;
   }
 
   return children;

@@ -9,6 +9,7 @@ function classNames(...classes) {
 }
 
 const Tabs = () => {
+  // ? Table structure for headless ui tabs
   // let [categories] = useState({
   //   HR: rolesHR,
   //   Developers: rolesDeveloper,
@@ -16,7 +17,7 @@ const Tabs = () => {
   // });
 
   const userData = useSelector((state) => state.userData);
-  const [userJSONData, setUserJSONData] = useState(userData);
+  // const [userJSONData, setUserJSONData] = useState(userData);
 
   const dispatch = useDispatch();
   return (
@@ -25,7 +26,7 @@ const Tabs = () => {
         {/* _____________________ TAB MENUS */}
 
         <Tab.List className="flex justify-center mx-5  p-1  space-x-1 dark:bg-gray-800 bg-teal-200  text-white rounded-xl">
-          {Object.keys(userJSONData).map((category) => (
+          {Object.keys(userData).map((category) => (
             <Tab
               key={category}
               className={({ selected }) =>
@@ -45,7 +46,7 @@ const Tabs = () => {
         {/* _____________________ TAB PANELS */}
 
         <Tab.Panels className="mt-5 mx-5 px-5">
-          {Object.values(userJSONData).map((posts, idx) => (
+          {Object.values(userData).map((posts, idx) => (
             <Tab.Panel
               key={idx}
               className={classNames(
