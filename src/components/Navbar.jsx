@@ -1,8 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { triggerDarkMode } from "../features/user/DarkMode";
-
 const Navbar = () => {
   const darkMode = useSelector((state) => state.darkMode);
   const dispatch = useDispatch();
@@ -15,12 +14,12 @@ const Navbar = () => {
         <div className="container mx-auto py-5 px-5 flex justify-between ">
           {/* Company Logo */}
           <div>
-            <a
+            <Link
               className="text-xl font-bold text-gray-800 transition-colors duration-200 transform dark:text-white lg:text-2xl hover:text-gray-700 dark:hover:text-gray-300 hidden md:block"
-              href="/"
+              to="/"
             >
               The Rapid Hire
-            </a>
+            </Link>
           </div>
 
           {!darkMode && (
