@@ -13,7 +13,9 @@ const UserDataSlice = createSlice({
   initialState,
   reducers: {
     getUsers: (state, action) => {
-      state.push(action.payload);
+      state = { ...initialState, apiData: action.payload };
+
+      return state;
     },
   },
 });

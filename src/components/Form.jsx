@@ -2,8 +2,8 @@ import { useFormik } from "formik";
 import React from "react";
 import Sidebar from "./Sidebar";
 import * as Yup from "yup";
-import { jsonToFormData } from "../app/helpers";
-import axios from "axios";
+// import { postUser } from "../app/helpers";
+
 const Form = () => {
   const formik = useFormik({
     initialValues: {
@@ -19,7 +19,7 @@ const Form = () => {
       localAddress: "",
       cityTown: "",
       state: "",
-      pincode: 452010,
+      pincode: "",
       permanentAddress: "",
       adhaarNo: "",
       anyOtherIdentity: "",
@@ -30,69 +30,63 @@ const Form = () => {
       bloodGroup: "",
       profilePicture: "",
     },
-    // validationSchema: Yup.object({
-    //   firstName: Yup.string("first name must be string")
-    //     .required("first name is required")
-    //     .max(25, "firstname cannot be larger than 25 characters")
-    //     .min(3, "firstname cannot be lower than 3 characters"),
 
-    //   lastName: Yup.string("last name must be a string")
-    //     .required("last name is required")
-    //     .max(25, "last name cannot be greater that 25 characters")
-    //     .min(3, "last name cannot be less than 3 characters"),
+    validationSchema: Yup.object({
+      firstName: Yup.string("first name must be string")
+        .required("first name is required")
+        .max(25, "firstname cannot be larger than 25 characters")
+        .min(3, "firstname cannot be lower than 3 characters"),
 
-    //   dateOfBirth: Yup.date("date of birth must be a valid date").required(
-    //     "date of birth is required"
-    //   ),
-    //   fatherFirstName: Yup.string("father's first name must be a string")
-    //     .required("father's first name is required")
-    //     .max(25, "father's first name cannot be larger than 25 characters")
-    //     .min(3, "father's first name cannot be lower than 3 characters"),
+      lastName: Yup.string("last name must be a string")
+        .required("last name is required")
+        .max(25, "last name cannot be greater that 25 characters")
+        .min(3, "last name cannot be less than 3 characters"),
 
-    //   fatherLastName: Yup.string("father's last name must be a string")
-    //     .required("father's last name is required")
-    //     .max(25, "father's last name cannot be larger than 25 characters")
-    //     .min(3, "father's last name cannot be lower than 3 characters"),
-    //   motherName: Yup.string("mother's name must be a string")
-    //     .required("mother's name is required")
-    //     .max(25, "mother's name cannot be larger than 25 characters")
-    //     .min(3, "mother's name cannot be lower than 3 characters"),
+      dateOfBirth: Yup.date("date of birth must be a valid date").required(
+        "date of birth is required"
+      ),
+      fatherFirstName: Yup.string("father's first name must be a string")
+        .required("father's first name is required")
+        .max(25, "father's first name cannot be larger than 25 characters")
+        .min(3, "father's first name cannot be lower than 3 characters"),
 
-    //   contactNo: Yup.number().required(),
+      fatherLastName: Yup.string("father's last name must be a string")
+        .required("father's last name is required")
+        .max(25, "father's last name cannot be larger than 25 characters")
+        .min(3, "father's last name cannot be lower than 3 characters"),
+      motherName: Yup.string("mother's name must be a string")
+        .required("mother's name is required")
+        .max(25, "mother's name cannot be larger than 25 characters")
+        .min(3, "mother's name cannot be lower than 3 characters"),
 
-    //   emergencyContactNo: Yup.number().required(),
+      contactNo: Yup.number().required(),
 
-    //   marriedStatus: Yup.string("married status must be a string").required(
-    //     "married status is required"
-    //   ),
-    //   localAddress: Yup.string().required("local address required"),
-    //   cityTown: Yup.string().required("city/town required"),
-    //   state: Yup.string().required("state is required"),
-    //   pincode: Yup.number(),
-    //   permanentAddress: Yup.string().required("permanent address required"),
-    //   adhaarNo: Yup.number().required("adhaar number required"),
-    //   anyOtherIdentity: Yup.string(),
-    //   role: Yup.string("Role must be  string").required("role is required"),
-    //   joiningDate: Yup.date("Enter valid date").required(
-    //     "joining date required"
-    //   ),
-    //   workExperience: Yup.string("").required(),
-    //   higherQualification: Yup.string(),
-    //   bloodGroup: Yup.string(),
-    //   profilePicture: Yup.string(),
-    // }),
-    onSubmit: (formObj) => {
-      const sendData = async (form) => {
-        await axios
-          .post(
-            "https://trh-family.herokuapp.com/addemployee",
-            jsonToFormData(formObj),
-            "Content-Type: multipart/form-data"
-          )
-          .then((res) => console.log(res.data));
-      };
+      emergencyContactNo: Yup.number().required(),
 
-      sendData();
+      marriedStatus: Yup.string("married status must be a string").required(
+        "married status is required"
+      ),
+      localAddress: Yup.string().required("local address required"),
+      cityTown: Yup.string().required("city/town required"),
+      state: Yup.string().required("state is required"),
+      pincode: Yup.number().required("pincode is required"),
+      permanentAddress: Yup.string().required("permanent address required"),
+      adhaarNo: Yup.number().required("adhaar number required"),
+      anyOtherIdentity: Yup.string(),
+      role: Yup.string("Role must be  string").required("role is required"),
+      joiningDate: Yup.date("Enter valid date").required(
+        "joining date required"
+      ),
+      workExperience: Yup.string("").required(),
+      higherQualification: Yup.string(),
+      bloodGroup: Yup.string(),
+      profilePicture: Yup.string(),
+    }),
+
+    onSubmit: (values) => {
+      // Post users
+      console.log(values);
+      // postUser(values);
     },
   });
 
