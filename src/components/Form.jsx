@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import React from "react";
 import Sidebar from "./Sidebar";
 import * as Yup from "yup";
+
 const Form = () => {
   const formik = useFormik({
     initialValues: {
@@ -15,7 +16,7 @@ const Form = () => {
       emergencyContactNo: "",
       marriedStatus: "",
       localAddress: "",
-      cityTowm: "",
+      cityTown: "",
       state: "",
       pincode: "",
       permanentAddress: "",
@@ -33,6 +34,46 @@ const Form = () => {
         .required("first name is required")
         .max(25, "firstname cannot be larger than 25 characters")
         .min(3, "firstname cannot be lower than 3 characters"),
+
+      lastName: Yup.string("last name must be a string")
+        .required("last name is required")
+        .max(25, "last name cannot be greater that 25 characters")
+        .min(3, "last name cannot be less than 3 characters"),
+
+      dateOfBirth: Yup.date("date of birth must be a valid date").required(
+        "date of birth is required"
+      ),
+      fatherFirstName: Yup.string("father's first name must be a string")
+        .required("father's first name is required")
+        .max(25, "father's first name cannot be larger than 25 characters")
+        .min(3, "father's first name cannot be lower than 3 characters"),
+
+      fatherLastName: Yup.string("father's last name must be a string")
+        .required("father's last name is required")
+        .max(25, "father's last name cannot be larger than 25 characters")
+        .min(3, "father's last name cannot be lower than 3 characters"),
+      motherName: Yup.string("mother's name must be a string")
+        .required("mother's name is required")
+        .max(25, "mother's name cannot be larger than 25 characters")
+        .min(3, "mother's name cannot be lower than 3 characters"),
+
+      contactNo: Yup.number()
+        .required()
+        .min(10, "enter valid number")
+        .max(10, "enter valid number"),
+
+      emergencyContactNo: Yup.number()
+        .required()
+        .min(10, "enter valid number")
+        .max(10, "enter valid number"),
+
+      marriedStatus: Yup.string("married status must be a string").required(
+        "married status is required"
+      ),
+      localAddress: Yup.string().required("local address required"),
+      cityTown: Yup.string().required("city/town required"),
+      state: Yup.string().required("state is required"),
+      pincode: Yup.number().required("pincode is required"),
     }),
     onSubmit: (values) => {
       console.log(values);
@@ -83,11 +124,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.lastName}
                 id="lastName"
                 type="text"
                 className="form-input"
               />
+              {formik.touched.lastName && formik.errors.lastName ? (
+                <p className="text-red-600">{formik.errors.lastName}</p>
+              ) : null}
             </div>
 
             {/* Date of Birth */}
@@ -101,11 +146,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.dateOfBirth}
                 id="dateOfBirth"
                 type="date"
                 className="form-input"
               />
+              {formik.touched.dateOfBirth && formik.errors.dateOfBirth ? (
+                <p className="text-red-600">{formik.errors.dateOfBirth}</p>
+              ) : null}
             </div>
 
             {/* Father first name */}
@@ -118,11 +167,16 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.fatherFirstName}
                 id="fatherFirstName"
                 type="text"
                 className="form-input"
               />
+              {formik.touched.fatherFirstName &&
+              formik.errors.fatherFirstName ? (
+                <p className="text-red-600">{formik.errors.fatherFirstName}</p>
+              ) : null}
             </div>
 
             {/* Father last name */}
@@ -135,11 +189,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.fatherLastName}
                 id="fatherLastName"
                 type="text"
                 className="form-input"
               />
+              {formik.touched.fatherLastName && formik.errors.fatherLastName ? (
+                <p>{formik.errors.fatherLastName}</p>
+              ) : null}
             </div>
 
             {/* Mother Name */}
@@ -152,11 +210,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.motherName}
                 id="motherName"
                 type="text"
                 className="form-input"
               />
+              {formik.touched.motherName && formik.errors.motherName ? (
+                <p className="text-red-600">{formik.errors.motherName}</p>
+              ) : null}
             </div>
 
             {/* Contact Number */}
@@ -170,11 +232,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.contactNo}
                 id="contactNo"
                 type="number"
                 className="form-input"
               />
+              {formik.touched.contactNo && formik.errors.contactNo ? (
+                <p className="text-red-600">{formik.errors.contactNo}</p>
+              ) : null}
             </div>
 
             {/* Emergency contact number */}
@@ -187,11 +253,18 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.emergencyContactNo}
                 id="emergencyContactNo"
                 type="number"
                 className="form-input"
               />
+              {formik.touched.emergencyContactNo &&
+              formik.errors.emergencyContactNo ? (
+                <p className="text-red-600">
+                  {formik.errors.emergencyContactNo}
+                </p>
+              ) : null}
             </div>
 
             {/* Married Status */}
@@ -205,11 +278,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.marriedStatus}
                 id="marriedStatus"
                 type="text"
                 className="form-input"
               />
+              {formik.touched.marriedStatus && formik.errors.marriedStatus ? (
+                <p className="text-red-600">{formik.errors.marriedStatus}</p>
+              ) : null}
             </div>
 
             {/* Local Address */}
@@ -222,11 +299,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.localAddress}
                 id="localAddress"
                 type="text"
                 className="form-input"
               />
+              {formik.touched.localAddress && formik.errors.localAddress ? (
+                <p className="text-red-600">{formik.errors.localAddress}</p>
+              ) : null}
             </div>
 
             {/* City/Town */}
@@ -239,11 +320,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.cityTown}
                 id="cityTown"
                 type="text"
                 className="form-input"
               />
+              {formik.touched.cityTown && formik.errors.cityTown ? (
+                <p className="text-red-600">{formik.errors.cityTown}</p>
+              ) : null}
             </div>
 
             {/* State */}
@@ -256,11 +341,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.state}
                 id="state"
                 type="text"
                 className="form-input"
               />
+              {formik.touched.state && formik.errors.state ? (
+                <p className="text-red-600">{formik.errors.state}</p>
+              ) : null}
             </div>
 
             {/* Pincode */}
@@ -273,11 +362,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.pinCode}
                 id="pinCode"
                 type="number"
                 className="form-input"
               />
+              {formik.touched.pincode && formik.errors.pincode ? (
+                <p className="text-red-600">{formik.errors.pincode}</p>
+              ) : null}
             </div>
 
             {/* Permanent Address */}
@@ -291,11 +384,16 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.permanentAddress}
                 id="permanentAddress"
                 type="text"
                 className="form-input"
               />
+              {formik.touched.permanentAddress &&
+              formik.errors.permanentAddress ? (
+                <p className="text-red-600">{formik.errors.permanentAddress}</p>
+              ) : null}
             </div>
 
             {/* Adhaar Number */}
@@ -309,11 +407,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.adhaarNo}
                 id="adhaarNo"
                 type="text"
                 className="form-input"
               />
+              {formik.touched.adhaarNo && formik.errors.adhaarNo ? (
+                <p className="text-red-600">{formik.errors.adhaarNo}</p>
+              ) : null}
             </div>
 
             {/* Any other identity */}
@@ -327,11 +429,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.anyOtherIdentity}
                 id="anyOtherIdentity"
                 type="text"
                 className="form-input"
               />
+              {formik.touched.anyOtherIdenty && formik.errors.anyOtherIdenty ? (
+                <p className="text-red-600">{formik.errors.anyOtherIdenty}</p>
+              ) : null}
             </div>
 
             {/* Role */}
@@ -345,11 +451,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.role}
                 id="role"
                 type="text"
                 className="form-input"
               />
+              {formik.touched.role && formik.errors.role ? (
+                <p className="text-red-600">{formik.errors.role}</p>
+              ) : null}
             </div>
 
             {/* Joining Date */}
@@ -363,11 +473,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.joiningDate}
                 id="joiningDate"
                 type="date"
                 className="form-input"
               />
+              {formik.touched.joiningDate && formik.errors.joiningDate ? (
+                <p className="text-red-600">{formik.errors.joiningDate}</p>
+              ) : null}
             </div>
 
             {/* Work experience */}
@@ -381,11 +495,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.workExperience}
                 id="workExperience"
                 type="text"
                 className="form-input"
               />
+              {formik.touched.workexperience && formik.errors.workexperience ? (
+                <p className="text-red-600">{formik.errors.workexperience}</p>
+              ) : null}
             </div>
 
             {/* Higher Qualification */}
@@ -398,11 +516,18 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.higherQualification}
                 id="higherQualification"
                 type="text"
                 className="form-input"
               />
+              {formik.touched.higherQualification &&
+              formik.errors.higherQualification ? (
+                <p className="text-red-600">
+                  {formik.errors.higherQualification}
+                </p>
+              ) : null}
             </div>
 
             {/* Blood group */}
@@ -416,11 +541,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.bloodGroup}
                 id="bloodGroup"
                 type="text"
                 className="form-input"
               />
+              {formik.touched.bloodGroup && formik.errors.bloodGroup ? (
+                <p className="text-red-600">{formik.errors.bloodGroup}</p>
+              ) : null}
             </div>
 
             {/* Profile Picture */}
@@ -434,11 +563,15 @@ const Form = () => {
               </label>
               <input
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.profilePicture}
                 id="profilePicture"
                 type="file"
                 className="form-input"
               />
+              {formik.touched.profilePicture && formik.errors.profilePicture ? (
+                <p className="text-red-600">{formik.errors.profilePicture}</p>
+              ) : null}
             </div>
           </div>
 
