@@ -15,9 +15,7 @@ const LandingPage = () => {
     e.preventDefault();
     // login
     const apiToken = await fakeAuth();
-
     localStorage.setItem("token", apiToken);
-
     navigate("/dashboard");
   };
 
