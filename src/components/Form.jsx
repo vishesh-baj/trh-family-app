@@ -2,7 +2,8 @@ import { useFormik } from "formik";
 import React from "react";
 import Sidebar from "./Sidebar";
 import * as Yup from "yup";
-
+import { jsonToFormData } from "../app/helpers";
+import axios from "axios";
 const Form = () => {
   const formik = useFormik({
     initialValues: {
@@ -18,10 +19,10 @@ const Form = () => {
       localAddress: "",
       cityTown: "",
       state: "",
-      pincode: "",
+      pincode: 452010,
       permanentAddress: "",
       adhaarNo: "",
-      anyOtherIdenty: "",
+      anyOtherIdentity: "",
       role: "",
       joiningDate: "",
       workexperience: "",
@@ -29,58 +30,71 @@ const Form = () => {
       bloodGroup: "",
       profilePicture: "",
     },
-    validationSchema: Yup.object({
-      firstName: Yup.string("first name must be string")
-        .required("first name is required")
-        .max(25, "firstname cannot be larger than 25 characters")
-        .min(3, "firstname cannot be lower than 3 characters"),
+    // validationSchema: Yup.object({
+    //   firstName: Yup.string("first name must be string")
+    //     .required("first name is required")
+    //     .max(25, "firstname cannot be larger than 25 characters")
+    //     .min(3, "firstname cannot be lower than 3 characters"),
 
-      lastName: Yup.string("last name must be a string")
-        .required("last name is required")
-        .max(25, "last name cannot be greater that 25 characters")
-        .min(3, "last name cannot be less than 3 characters"),
+    //   lastName: Yup.string("last name must be a string")
+    //     .required("last name is required")
+    //     .max(25, "last name cannot be greater that 25 characters")
+    //     .min(3, "last name cannot be less than 3 characters"),
 
-      dateOfBirth: Yup.date("date of birth must be a valid date").required(
-        "date of birth is required"
-      ),
-      fatherFirstName: Yup.string("father's first name must be a string")
-        .required("father's first name is required")
-        .max(25, "father's first name cannot be larger than 25 characters")
-        .min(3, "father's first name cannot be lower than 3 characters"),
+    //   dateOfBirth: Yup.date("date of birth must be a valid date").required(
+    //     "date of birth is required"
+    //   ),
+    //   fatherFirstName: Yup.string("father's first name must be a string")
+    //     .required("father's first name is required")
+    //     .max(25, "father's first name cannot be larger than 25 characters")
+    //     .min(3, "father's first name cannot be lower than 3 characters"),
 
-      fatherLastName: Yup.string("father's last name must be a string")
-        .required("father's last name is required")
-        .max(25, "father's last name cannot be larger than 25 characters")
-        .min(3, "father's last name cannot be lower than 3 characters"),
-      motherName: Yup.string("mother's name must be a string")
-        .required("mother's name is required")
-        .max(25, "mother's name cannot be larger than 25 characters")
-        .min(3, "mother's name cannot be lower than 3 characters"),
+    //   fatherLastName: Yup.string("father's last name must be a string")
+    //     .required("father's last name is required")
+    //     .max(25, "father's last name cannot be larger than 25 characters")
+    //     .min(3, "father's last name cannot be lower than 3 characters"),
+    //   motherName: Yup.string("mother's name must be a string")
+    //     .required("mother's name is required")
+    //     .max(25, "mother's name cannot be larger than 25 characters")
+    //     .min(3, "mother's name cannot be lower than 3 characters"),
 
-      contactNo: Yup.number()
-        .required()
-        .min(10, "enter valid number")
-        .max(10, "enter valid number"),
+    //   contactNo: Yup.number().required(),
 
-      emergencyContactNo: Yup.number()
-        .required()
-        .min(10, "enter valid number")
-        .max(10, "enter valid number"),
+    //   emergencyContactNo: Yup.number().required(),
 
-      marriedStatus: Yup.string("married status must be a string").required(
-        "married status is required"
-      ),
-      localAddress: Yup.string().required("local address required"),
-      cityTown: Yup.string().required("city/town required"),
-      state: Yup.string().required("state is required"),
-      pincode: Yup.number().required("pincode is required"),
-    }),
-    onSubmit: (values) => {
-      // Post users
-      console.log(values);
+    //   marriedStatus: Yup.string("married status must be a string").required(
+    //     "married status is required"
+    //   ),
+    //   localAddress: Yup.string().required("local address required"),
+    //   cityTown: Yup.string().required("city/town required"),
+    //   state: Yup.string().required("state is required"),
+    //   pincode: Yup.number(),
+    //   permanentAddress: Yup.string().required("permanent address required"),
+    //   adhaarNo: Yup.number().required("adhaar number required"),
+    //   anyOtherIdentity: Yup.string(),
+    //   role: Yup.string("Role must be  string").required("role is required"),
+    //   joiningDate: Yup.date("Enter valid date").required(
+    //     "joining date required"
+    //   ),
+    //   workExperience: Yup.string("").required(),
+    //   higherQualification: Yup.string(),
+    //   bloodGroup: Yup.string(),
+    //   profilePicture: Yup.string(),
+    // }),
+    onSubmit: (formObj) => {
+      const sendData = async (form) => {
+        await axios
+          .post(
+            "https://trh-family.herokuapp.com/addemployee",
+            jsonToFormData(formObj),
+            "Content-Type: multipart/form-data"
+          )
+          .then((res) => console.log(res.data));
+      };
+
+      sendData();
     },
   });
-  console.log(formik.values);
 
   return (
     <div className="flex mt-14">
@@ -197,7 +211,7 @@ const Form = () => {
                 className="form-input"
               />
               {formik.touched.fatherLastName && formik.errors.fatherLastName ? (
-                <p>{formik.errors.fatherLastName}</p>
+                <p className="text-red-600">{formik.errors.fatherLastName}</p>
               ) : null}
             </div>
 

@@ -1,6 +1,6 @@
 import axios from "axios";
+import { serialize } from "object-to-formdata";
 // LOGIN API
-
 export async function login(userData) {
   console.log(userData);
   axios
@@ -27,4 +27,18 @@ export const fakeAuth = () =>
 export const triggerDarkMode = (darkmode) => {
   darkmode && document.body.classList.add("dark");
   !darkmode && document.body.classList.remove("dark");
+};
+
+// convert to formdata
+export const jsonToFormData = (jsonObj) => {
+  // let formData = new FormData();
+
+  // for (const key in jsonObj) {
+  //   formData.append(key, jsonObj[key]);
+  // }
+  const formData = serialize(jsonObj);
+
+  console.log(formData);
+
+  return formData;
 };
