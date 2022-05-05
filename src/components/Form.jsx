@@ -76,6 +76,7 @@ const Form = () => {
       pincode: Yup.number().required("pincode is required"),
     }),
     onSubmit: (values) => {
+      // Post users
       console.log(values);
     },
   });
