@@ -1,12 +1,7 @@
-import React, { useState } from "react";
-import { FaUserEdit } from "react-icons/fa";
+import React from "react";
 import { RiSettings3Fill } from "react-icons/ri";
-const UserInfoCard = ({ user }) => {
-  const [toggleOverlay, setToggleOverlay] = useState(false);
-  const handleClick = () => {
-    setToggleOverlay(!toggleOverlay);
-  };
 
+const UserInfoCard = ({ user }) => {
   return (
     <React.Fragment>
       <div className="max-w-5xl flex-1 px-8 py-4 mx-auto mt-16 bg-white rounded-lg shadow-lg h-[80vh] my-10 dark:bg-gray-800">
@@ -28,22 +23,45 @@ const UserInfoCard = ({ user }) => {
         </h1>
 
         <div className="w-full ">
-          <div className="max-w-[992px] h-[450px] grid grid-cols-12 mt-10 gap-5 ">
+          <div className="max-w-[992px] h-auto grid grid-cols-12 mt-10 gap-5 ">
             {/* User details container */}
 
             <div className="col-start-1  col-end-11 border border-teal-400 rounded-xl">
               <div className=" w-screen  h-auto p-10">
                 <h1 className="text-teal-500 underline underline-offset-4">
-                  First Name: Vishesh{" "}
+                  First Name: {user.firstName}
                 </h1>
                 <h1 className="text-teal-500 underline underline-offset-4">
-                  First Name: Vishesh{" "}
+                  Last Name: {user.lastName}
                 </h1>
                 <h1 className="text-teal-500 underline underline-offset-4">
-                  First Name: Vishesh{" "}
+                  Date of Birth: {user.dateOfBirth}
                 </h1>
-                <h1>{user.role}</h1>
-                <p>{user.contact_no}</p>
+                <h1 className="text-teal-500 underline underline-offset-4">
+                  Father's First Name: {user.fatherFirstName}
+                </h1>
+                <h1 className="text-teal-500 underline underline-offset-4">
+                  Father's Last Name: {user.fatherLastName}
+                </h1>
+                <h1 className="text-teal-500 underline underline-offset-4">
+                  Mother's name: {user.motherName}
+                </h1>
+                <h1 className="text-teal-500 underline underline-offset-4">
+                  Contact Number: {user.contactNo}
+                </h1>
+
+                <h1 className="text-teal-500 underline underline-offset-4">
+                  Emergency Contact Number: {user.emergencyContactNo}
+                </h1>
+                <h1 className="text-teal-500 underline underline-offset-4">
+                  Married Status: {user.marriedStatus}
+                </h1>
+                <h1 className="text-teal-500 underline underline-offset-4">
+                  Local Address: {user.localAddress}
+                </h1>
+                <p className="text-teal-500 underline underline-offset-4">
+                  Role: {user.role}
+                </p>
               </div>
             </div>
             {/* Admin options container */}
@@ -56,10 +74,6 @@ const UserInfoCard = ({ user }) => {
           </div>
         </div>
       </div>
-      {/* <div
-        onClick={handleClick}
-        className={`z-[100] bg-black opacity-50 w-screen h-screen absolute left-0 top-0 `}
-      ></div> */}
     </React.Fragment>
   );
 };

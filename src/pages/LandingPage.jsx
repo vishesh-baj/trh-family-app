@@ -16,6 +16,7 @@ const LandingPage = () => {
     // login
     const apiToken = await fakeAuth();
     localStorage.setItem("token", apiToken);
+    
     navigate("/dashboard");
   };
 

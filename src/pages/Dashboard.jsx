@@ -10,18 +10,18 @@ const Dashboard = () => {
   const [userData, setUserData] = useState([]);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const getData = async () => {
-      await axios
-        .get("https://trh-family.herokuapp.com/employees")
-        .then((res) => {
-          setUserData(res.data.data);
-        });
-    };
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     await axios
+  //       .get("https://trh-family.herokuapp.com/employees")
+  //       .then((res) => {
+  //         setUserData(res.data.data);
+  //       });
+  //   };
 
-    getData();
-  }, []);
-  dispatch(getUsers(userData));
+  //   getData();
+  // }, []);
+  // dispatch(getUsers(userData));
 
   return (
     <div className="flex mt-14 ">
