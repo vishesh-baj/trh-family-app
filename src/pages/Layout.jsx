@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
   const darkmode = useSelector((state) => state.darkmode);
 
   // * For specific user route
-  const { id } = currentUser;
+  const { _id } = currentUser;
 
   // * Enable and disable dark mode
   triggerDarkMode(darkmode);
@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
           />
 
           <Route
-            path={`user/:${id}`}
+            path={`user/:${_id}`}
             element={
               <ProtectedRoute>
                 <UserDetails />

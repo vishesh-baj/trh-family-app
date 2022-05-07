@@ -1,11 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { rolesDeveloper, rolesHR, rolesSales } from "../../db/roles";
 
-// TODO: Add the specific filters for each role from api and show here
 const initialState = {
-  hr: rolesHR,
-  dev: rolesDeveloper,
-  sales: rolesSales,
+  hr: [],
+  dev: [],
+  sales: [],
 };
 
 const UserDataSlice = createSlice({
@@ -13,7 +11,8 @@ const UserDataSlice = createSlice({
   initialState,
   reducers: {
     getUsers: (state, action) => {
-      state.push(action.payload);
+      state = action.payload;
+      return state;
     },
   },
 });

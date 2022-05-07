@@ -21,7 +21,7 @@ const Tabs = () => {
 
   const dispatch = useDispatch();
   return (
-    <div className="w-auto   py-10 sm:px-0">
+    <div className="w-auto h-screen py-10 sm:px-0">
       <Tab.Group>
         {/* _____________________ TAB MENUS */}
 
@@ -42,6 +42,7 @@ const Tabs = () => {
             </Tab>
           ))}
         </Tab.List>
+        
 
         {/* _____________________ TAB PANELS */}
 
@@ -67,7 +68,7 @@ const Tabs = () => {
                     >
                       <div>
                         <h3 className="text-sm font-medium leading-5">
-                          {post.first_name} {post.last_name}
+                          {post.firstName} {post.last_name}
                         </h3>
 
                         <ul className="flex mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
@@ -76,7 +77,7 @@ const Tabs = () => {
                           </li>
                           <li>&middot;</li>
                           <li>
-                            <em>Primary Contact:</em> {post.contact_no}
+                            <em>Primary Contact:</em> {post.contactNo}
                           </li>
                           <li>&middot;</li>
                         </ul>
