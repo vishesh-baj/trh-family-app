@@ -25,7 +25,7 @@ const UserInfoCard = ({ user }) => {
           <div className="max-w-[992px] h-auto grid grid-cols-12 mt-10 gap-5 ">
             {/* User details container */}
 
-            <div className="col-start-1  col-end-12 md:col-end-11 border border-teal-400 rounded-xl">
+            <div className="col-start-1  col-end-12 md:col-end-12 border border-teal-400 rounded-xl">
               <div className="flex flex-col md:flex-row">
                 <div className=" w-full p-10">
                   {Object.keys(user)

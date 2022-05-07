@@ -42,7 +42,6 @@ const Tabs = () => {
             </Tab>
           ))}
         </Tab.List>
-        
 
         {/* _____________________ TAB PANELS */}
 
@@ -60,10 +59,10 @@ const Tabs = () => {
                   <Link
                     key={idx * 100}
                     onClick={() => dispatch(getSelectedUser(post))}
-                    to={`/user/${post.id}`}
+                    to={`/user/${post._id}`}
                   >
                     <li
-                      key={post.id}
+                      key={post._id}
                       className="relative my-5 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-300 hover:scale-105 transform ease-in-out flex-col flex md:flex-row  justify-between px-3  py-3 rounded-md hover:bg-coolGray-100 cursor-pointer dark:bg-gray-800 dark:text-gray-50 "
                     >
                       <div>
