@@ -26,3 +26,19 @@ export const getAllEmployees = async () => {
 
   return allEmployees;
 };
+
+// ? POST A NEW EMPLOYEE
+
+export const postEmployee = async (formData) => {
+  const headers = {
+    "Content-Type": "application/form-data",
+    "Access-Control-Allow-Origin": "*",
+  };
+  let postedEmployee;
+  await axios
+    .post(`${URL}/addemployee`, formData, headers)
+    .then((response) => (postedEmployee = response.data.data))
+    .catch((err) => console.log(err));
+
+  return postedEmployee;
+};

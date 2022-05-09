@@ -23,7 +23,7 @@ const Navbar = () => {
             </Link>
             {!darkMode && (
               <CgDarkMode
-                className=" duration-300 animate-spin text-teal-200 cursor-pointer"
+                className=" duration-300 animate-spin text-teal-200 cursor-pointer ml-12 "
                 size={25}
                 onClick={() => {
                   dispatch(triggerDarkMode());

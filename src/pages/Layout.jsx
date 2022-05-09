@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { triggerDarkMode } from "../app/helpers";
 import ProtectedRoute from "../routes/ProtectedRoute";
 import Form from "../components/Form";
+import LoginRoute from "../routes/loginRoute";
 // Layout for the application to specify what exactly need to be renderd in the app component
 
 const Layout = ({ children }) => {
@@ -24,7 +25,15 @@ const Layout = ({ children }) => {
       <Router>
         {children[0]}
         <Routes>
-          <Route index path="/" element={<LandingPage />} />
+          <Route
+            index
+            path="/"
+            element={
+              <LoginRoute>
+                <LandingPage />
+              </LoginRoute>
+            }
+          />
           <Route
             path="/dashboard"
             element={
@@ -34,7 +43,7 @@ const Layout = ({ children }) => {
             }
           />
           {console.log(_id)}
-          <Route path={`/user/${_id}`} element={<UserDetails />} />
+          <Route path={`/employee/${_id}`} element={<UserDetails />} />
           <Route path="/new-entry" element={<Form />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

@@ -59,7 +59,7 @@ const Tabs = () => {
                   <Link
                     key={idx * 100}
                     onClick={() => dispatch(getSelectedUser(post))}
-                    to={`/user/${post._id}`}
+                    to={`/employee/${post._id}`}
                   >
                     <li
                       key={post._id}

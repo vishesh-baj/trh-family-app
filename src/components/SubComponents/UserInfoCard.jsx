@@ -1,5 +1,4 @@
 import React from "react";
-import { RiSettings3Fill } from "react-icons/ri";
 
 const UserInfoCard = ({ user }) => {
   return (
@@ -15,8 +14,8 @@ const UserInfoCard = ({ user }) => {
         </div>
 
         <h1 className="mt-2 pb-2 w-1/2 border-b-4 border-teal-400 text-2xl md:text-4xl lg:text-6xl font-semibold  dark:text-white md:mt-0">
-          <span className="text-teal-400 ">U</span>
-          ser{"  "}
+          <span className="text-teal-400 ">E</span>
+          mployee{"  "}
           <span className="text-teal-400 ">D</span>
           etails
         </h1>
@@ -31,8 +30,15 @@ const UserInfoCard = ({ user }) => {
                   {Object.keys(user)
                     .slice(1, 12)
                     .map((field) => (
-                      <h1 className="text-lg font-semibold py-1 items-center text-black dark:text-teal-400">
-                        {field.toUpperCase()}:<span> {user[field]}</span>
+                      <h1
+                        key={user}
+                        className="text-lg font-semibold py-1 items-center text-black dark:text-teal-400"
+                      >
+                        {field.toUpperCase()}:
+                        <span className="text-teal-400 dark:text-white">
+                          {" "}
+                          {user[field]}
+                        </span>
                       </h1>
                     ))}
                 </div>
@@ -42,7 +48,11 @@ const UserInfoCard = ({ user }) => {
                     .slice(13, 23)
                     .map((field) => (
                       <h1 className="text-lg font-semibold py-1 items-center text-black dark:text-teal-400">
-                        {field.toUpperCase()}: {user[field]}
+                        {field.toUpperCase()}:{" "}
+                        <span className="text-teal-400 dark:text-white">
+                          {" "}
+                          {user[field]}
+                        </span>
                       </h1>
                     ))}
                 </div>
