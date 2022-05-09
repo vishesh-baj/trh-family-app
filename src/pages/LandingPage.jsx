@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../app/api";
-import { checkLocalStorage } from "../app/helpers";
-import { filterEmployees } from "../app/helpers";
-import { getAllEmployees } from "../app/api";
-import { useDispatch } from "react-redux";
-import { getUsers } from "../features/user/UserDataSlice";
 
 const LandingPage = () => {
   const [userData, setUserData] = useState({
@@ -14,7 +9,6 @@ const LandingPage = () => {
   });
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   // *  Handling submit trigger for  form submit
 
@@ -23,10 +17,6 @@ const LandingPage = () => {
     // login
     await login(userData);
     localStorage.setItem("token", "isLogged");
-    const employeesList = await getAllEmployees();
-    const filteredEmployeeObj = filterEmployees(employeesList);
-    // * Checking if localstorage token is present, and then only dispatching the filtered array
-    checkLocalStorage() && dispatch(getUsers(filteredEmployeeObj));
 
     navigate("/dashboard");
   };
