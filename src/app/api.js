@@ -4,10 +4,14 @@ import axios from "axios";
 const URL = "https://trh-family.herokuapp.com";
 export async function login(userData) {
   axios
-    .post(`${URL}/login`, {
-      email: userData.email,
-      password: userData.password,
-    })
+    .post(
+      `${URL}/login`,
+      {
+        email: userData.email,
+        password: userData.password,
+      },
+      { "Access-Control-Allow-Origin": "*" }
+    )
     .then(function (response) {
       return;
     })
@@ -20,7 +24,7 @@ export async function login(userData) {
 export const getAllEmployees = async () => {
   let allEmployees;
   await axios
-    .get(`${URL}/employees`)
+    .get(`${URL}/employees`, { "Access-Control-Allow-Origin": "*" })
     .then((response) => (allEmployees = response.data.data))
     .catch((err) => console.log(err));
 

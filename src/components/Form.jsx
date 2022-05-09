@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { postEmployee } from "../app/api";
 import { formArray } from "../app/helpers";
 
-// import { validatorObj } from "../app/helpers";
 import Sidebar from "./Sidebar";
 import FormInput from "./SubComponents/FormInput";
 
@@ -34,13 +33,13 @@ const Form = () => {
     profilePicture: "",
   });
 
-  // handles the onChange foreach input
+  // * handles the onChange foreach input
 
   const handleChange = (e) => {
     setFormInputObj({ ...formInputObj, [e.target.name]: e.target.value });
   };
 
-  // Submit the form
+  // * Submit the form
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,7 +49,7 @@ const Form = () => {
     formInputObj.adhaarNo = Number(formInputObj.adhaarNo);
 
     console.log(formInputObj);
-    // Convert formObj to formData
+    // * Convert formObj to formData
     let formData = new FormData();
     for (let key in formInputObj) {
       formData.append(key, formInputObj[key]);
@@ -85,7 +84,7 @@ const Form = () => {
             })}
           </div>
 
-          {/* Submit button */}
+          {/* SUBMIT BUTTON */}
           <div className="flex justify-end mt-6">
             <button
               type="submit"

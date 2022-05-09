@@ -9,15 +9,7 @@ function classNames(...classes) {
 }
 
 const Tabs = () => {
-  // ? Table structure for headless ui tabs
-  // let [categories] = useState({
-  //   HR: rolesHR,
-  //   Developers: rolesDeveloper,
-  //   Sales: rolesSales,
-  // });
-
   const userData = useSelector((state) => state.userData);
-  // const [userJSONData, setUserJSONData] = useState(userData);
 
   const dispatch = useDispatch();
   return (
@@ -51,7 +43,7 @@ const Tabs = () => {
               key={idx}
               className={classNames(
                 "bg-white rounded-xl",
-                "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60"
+                "focus:outline-none focus:ring-2 ring-offset-2  ring-white ring-opacity-60"
               )}
             >
               <ul className="  flex-wrap dark:bg-gray-700 bg-teal-50">

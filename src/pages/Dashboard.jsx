@@ -7,6 +7,8 @@ import DashboardView from "../components/DashboardView";
 import Sidebar from "../components/Sidebar";
 import { getUsers } from "../features/user/UserDataSlice";
 
+// * SPECIFIC TO SHOWING DATA
+
 const Dashboard = () => {
   const dispatch = useDispatch();
 

@@ -9,7 +9,7 @@ import { triggerDarkMode } from "../app/helpers";
 import ProtectedRoute from "../routes/ProtectedRoute";
 import Form from "../components/Form";
 import LoginRoute from "../routes/loginRoute";
-// Layout for the application to specify what exactly need to be renderd in the app component
+// * Layout for the application to specify what exactly need to be renderd in the app component
 
 const Layout = ({ children }) => {
   const currentUser = useSelector((state) => state.selectedUser);
