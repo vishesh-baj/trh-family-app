@@ -5,6 +5,7 @@ import Sidebar from "../components/Sidebar";
 import { convertCamelCase, formArray } from "../app/helpers";
 import { MdOutlineSettings } from "react-icons/md";
 import FormInput from "../components/SubComponents/FormInput";
+import { GrClose } from "react-icons/gr";
 
 const UserDetails = () => {
   const [showModal, setShowModal] = useState(false);
@@ -144,7 +145,7 @@ const UserDetails = () => {
               <div className="border-0  shadow-lg relative flex flex-col w-full bg-white  dark:bg-gray-700 outline-none focus:outline-none ">
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid rounded-t">
-                  <h3 className="text-3xl font-semibold">
+                  <h3 className="text-3xl font-semibold dark:text-white">
                     Edit Employee Details
                   </h3>
                   <button
@@ -171,6 +172,7 @@ const UserDetails = () => {
                             label={entry.label}
                             type={entry.type}
                             handleChange={handleChange}
+                            // defaultValue={`${user[entry.name]}`}
                           />
                         );
                       })}
@@ -200,6 +202,7 @@ const UserDetails = () => {
               </div>
             </div>
           </div>
+          <GrClose />
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}
