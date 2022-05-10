@@ -33,7 +33,6 @@ const Navbar = () => {
           </div>
 
           {/*  Logout button, handling logging out of the dashboard */}
-
           <div className="flex  justify-between">
             {token && (
               <button
