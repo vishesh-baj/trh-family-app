@@ -216,10 +216,19 @@ export const filterEmployees = (employeesArr) => {
   );
 
   const employeeData = {
-    dev: devEmployees,
     hr: hrEmployees,
+    dev: devEmployees,
     sales: salesEmployees,
   };
 
   return employeeData;
+};
+
+// CONVERT CAMELCASE TO SPACE SEPERATED
+
+export const convertCamelCase = (string) => {
+  var result = string.replace(/([A-Z])/g, " $1");
+  var finalResult = result.charAt(0).toUpperCase() + result.slice(1);
+
+  return finalResult;
 };

@@ -4,6 +4,7 @@ import { getAllEmployees } from "../app/api";
 import { checkLocalStorage, filterEmployees } from "../app/helpers";
 import { getUsers } from "../features/user/UserDataSlice";
 import Tabs from "./Tabs";
+
 const DashboardView = () => {
   const dispatch = useDispatch();
   useEffect(() => {

@@ -55,7 +55,7 @@ const Tabs = () => {
                   >
                     <li
                       key={post._id}
-                      className="relative my-5 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-300 hover:scale-105 transform ease-in-out flex-col flex md:flex-row  justify-between px-3  py-3 rounded-md hover:bg-coolGray-100 cursor-pointer dark:bg-gray-800 dark:text-gray-50 "
+                      className="relative my-5 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-300 hover:scale-105 transform ease-in-out flex-col flex md:flex-row  justify-between px-3  py-3 rounded-md hover:bg-coolGray-100 cursor-pointer dark:bg-gray-700 dark:text-gray-50 "
                     >
                       <div>
                         <h3 className="text-sm font-medium leading-5">
