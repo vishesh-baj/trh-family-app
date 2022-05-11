@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { Navigate, useNavigate } from "react-router-dom";
 // ? LOGIN API
 const URL = "https://trh-family.herokuapp.com";
 export async function login(userData) {
@@ -74,7 +74,8 @@ export const deleteEmployee = (employeeId) => {
     data: "",
   })
     .then((response) => {
-      window.location.reload(false);
+      console.log(response);
+      // window.location.reload(false);
       //  after delete call again get data api
     })
     .catch((error) => {
