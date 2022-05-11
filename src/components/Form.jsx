@@ -21,8 +21,8 @@ const Form = () => {
     state: "",
     pinCode: "",
     permanentAddress: "",
+    aadharNo: "",
     email: "",
-    adhaarNo: "",
     anyOtherIdentity: "",
     role: "",
     joiningDate: "",
@@ -32,12 +32,12 @@ const Form = () => {
     profilePicture: "",
   });
 
-  const changeToNumber = () => {
-    formInputObj.contactNo = Number(formInputObj.contactNo);
-    formInputObj.emergencyContactNo = Number(formInputObj.emergencyContactNo);
-    formInputObj.pinCode = Number(formInputObj.pinCode);
-    formInputObj.adhaarNo = Number(formInputObj.adhaarNo);
-  };
+  // const changeToNumber = () => {
+  //   formInputObj.contactNo = Number(formInputObj.contactNo);
+  //   formInputObj.emergencyContactNo = Number(formInputObj.emergencyContactNo);
+  //   formInputObj.pinCode = Number(formInputObj.pinCode);
+  //   formInputObj.aadharNo = Number(formInputObj.aadharNo);
+  // };
   // * handles the onChange foreach input
 
   const handleChange = (e) => {
@@ -48,16 +48,17 @@ const Form = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    changeToNumber();
+    // changeToNumber();
 
-    console.log(formInputObj);
-    // * Convert formObj to formData
-    let formData = new FormData();
-    for (let key in formInputObj) {
-      formData.append(key, formInputObj[key]);
-    }
-    console.log(formData);
-    postEmployee(formData);
+    // console.log(formInputObj);
+    // // * Convert formObj to formData
+    // let formData = new FormData();
+    // for (let key in formInputObj) {
+    //   formData.append(key, formInputObj[key]);
+    // }
+    // console.log(formData);
+    // postEmployee(formData);
+    postEmployee(formInputObj);
   };
 
   return (

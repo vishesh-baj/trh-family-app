@@ -121,7 +121,7 @@ const UserDetails = () => {
                 etails
               </h1>
               {Object.entries(user)
-                .slice(18, 22)
+                .slice(18, 23)
                 .map((entry) => (
                   <UserInfoCard
                     entry1={convertCamelCase(entry[0])}
@@ -181,7 +181,7 @@ const UserDetails = () => {
                     {/* SUBMIT BUTTON */}
                     <div className="flex justify-end mt-6">
                       <button
-                        className="text-red-500 border border-red-800 rounded-xl font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        className="text-red-500 border border-red-800 hover:bg-red-800 rounded-md font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                         type="button"
                         onClick={() => setShowModal(false)}
                       >

@@ -13,6 +13,7 @@ const DashboardView = () => {
       const filteredEmployeeObj = filterEmployees(employeesList);
       // * Checking if localstorage token is present, and then only dispatching the filtered array
       checkLocalStorage() && dispatch(getUsers(filteredEmployeeObj));
+      console.log(employeesList, filteredEmployeeObj);
     };
 
     init();

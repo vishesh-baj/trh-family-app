@@ -144,7 +144,7 @@ export const formArray = [
   },
   {
     id: "16",
-    name: "adhaarNumber",
+    name: "aadharNo",
     label: "Adhaar Number",
     type: "number",
   },
