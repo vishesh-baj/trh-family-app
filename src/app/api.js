@@ -33,7 +33,6 @@ export const postEmployee = async (postData) => {
   var imagedata = document.querySelector('input[type="file"]').files[0];
 
   let formData = new FormData();
-  // console.log(Object.keys(values))
   let keys = Object.keys(postData);
   for (let i = 0; i < keys.length; i++) {
     if (keys[i] === "profilePicture") {
@@ -63,4 +62,22 @@ export const editEmployee = async () => {
   await axios.put(`${URL}/employee/employeeID`, {
     payload: "payload",
   });
+};
+
+//  ? DELETE AN EMPLOYEE
+
+export const deleteEmployee = (employeeId) => {
+  axios({
+    method: "delete",
+    url: `https://trh-family.herokuapp.com/employee/${employeeId}`,
+    header: "",
+    data: "",
+  })
+    .then((response) => {
+      window.location.reload(false);
+      //  after delete call again get data api
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };

@@ -6,8 +6,12 @@ import { convertCamelCase, formArray } from "../app/helpers";
 import { MdOutlineSettings } from "react-icons/md";
 import FormInput from "../components/SubComponents/FormInput";
 import { GrClose } from "react-icons/gr";
+import { MdDeleteOutline } from "react-icons/md";
+import { deleteEmployee } from "../app/api";
+import { useNavigate } from "react-router-dom";
 
 const UserDetails = () => {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [formInputObj, setFormInputObj] = useState({
     firstName: "",
@@ -80,11 +84,21 @@ const UserDetails = () => {
                 etails
               </h1>
 
-              <MdOutlineSettings
-                onClick={() => setShowModal(true)}
-                size={30}
-                className="text-teal-400 animate-spin"
-              />
+              <div className="flex justify-around">
+                <MdOutlineSettings
+                  onClick={() => setShowModal(true)}
+                  size={30}
+                  className="text-teal-400 animate-spin"
+                />
+                <MdDeleteOutline
+                  onClick={() => {
+                    deleteEmployee(user._id);
+                    navigate("/dashboard");
+                  }}
+                  size={30}
+                  className="text-red-400 animate-pulse"
+                />
+              </div>
             </div>
             {Object.entries(user)
               .slice(1, 12)
