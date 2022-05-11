@@ -1,11 +1,12 @@
 // import { useFormik } from "formik";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { postEmployee } from "../app/api";
 import { formArray } from "../app/helpers";
 import Sidebar from "./Sidebar";
 import FormInput from "./SubComponents/FormInput";
-
 const Form = () => {
+  const navigate = useNavigate();
   const [formInputObj, setFormInputObj] = useState({
     firstName: "",
     lastName: "",
@@ -77,6 +78,7 @@ const Form = () => {
               <button
                 type="submit"
                 className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+                onClick={() => navigate("/dashboard")}
               >
                 Save
               </button>

@@ -13,7 +13,7 @@ const Sidebar = () => {
 
       <GiHamburgerMenu
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed h-8 w-8  ml-5 -mt-8   md:hidden z-40 text-teal-400"
+        className="fixed h-8 w-8  -mt-14 ml-5  md:hidden z-40 text-teal-400"
       />
 
       <div className="relative mt-6">
