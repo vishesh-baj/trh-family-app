@@ -43,7 +43,6 @@ const Layout = ({ children }) => {
               </ProtectedRoute>
             }
           />
-          {console.log(_id)}
           <Route path={`/employee/${_id}`} element={<UserDetails />} />
           <Route path="/new-entry" element={<Form />} />
           <Route path="*" element={<ErrorPage />} />

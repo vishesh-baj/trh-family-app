@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+
 // ? LOGIN API
 const URL = "https://trh-family.herokuapp.com";
 export async function login(userData) {
@@ -9,7 +9,7 @@ export async function login(userData) {
       password: userData.password,
     })
     .then(function (response) {
-      return;
+      return response;
     })
     .catch(function (error) {
       console.log(error);
@@ -41,6 +41,7 @@ export const postEmployee = async (postData) => {
       formData.append(keys[i], postData[keys[i]]);
     }
   }
+
   let baseUrl = "https://trh-family.herokuapp.com/";
   let url = baseUrl + "addemployee";
   axios({
@@ -57,15 +58,12 @@ export const postEmployee = async (postData) => {
 };
 
 // ? EDIT AN EMPLOYEE
-
-export const editEmployee = async () => {
-  await axios.put(`${URL}/employee/employeeID`, {
-    payload: "payload",
-  });
+export const editEmployee = async (employeeID, payload) => {
+  const headers = { "Content-Type": "application/json, multipart/form-data" };
+  await axios.put(`${URL}/emplopyee/${employeeID}`, payload, headers);
 };
 
 //  ? DELETE AN EMPLOYEE
-
 export const deleteEmployee = (employeeId) => {
   axios({
     method: "delete",

@@ -13,7 +13,7 @@ const FormInput = ({ id, name, label, type, handleChange, defaultValue }) => {
         name={name}
         type={type}
         onChange={handleChange}
-        // defaultValue={defaultValue}
+        defaultValue={defaultValue}
       />
     </div>
   );

@@ -7,7 +7,7 @@ import { MdOutlineSettings } from "react-icons/md";
 import FormInput from "../components/SubComponents/FormInput";
 import { GrClose } from "react-icons/gr";
 import { MdDeleteOutline } from "react-icons/md";
-import { deleteEmployee } from "../app/api";
+import { deleteEmployee, editEmployee } from "../app/api";
 import { useNavigate } from "react-router-dom";
 
 const UserDetails = () => {
@@ -30,7 +30,7 @@ const UserDetails = () => {
     pinCode: "",
     permanentAddress: "",
     email: "",
-    adhaarNo: "",
+    aadharNo: "",
     anyOtherIdentity: "",
     role: "",
     joiningDate: "",
@@ -41,15 +41,10 @@ const UserDetails = () => {
   });
 
   const user = useSelector((state) => state.selectedUser);
-  console.log(user);
+
+  let arr = [];
 
   // MODAL LOGIC
-  const changeToNumber = () => {
-    formInputObj.contactNo = Number(formInputObj.contactNo);
-    formInputObj.emergencyContactNo = Number(formInputObj.emergencyContactNo);
-    formInputObj.pinCode = Number(formInputObj.pinCode);
-    formInputObj.adhaarNo = Number(formInputObj.adhaarNo);
-  };
   // * handles the onChange foreach input
 
   const handleChange = (e) => {
@@ -60,15 +55,8 @@ const UserDetails = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    changeToNumber();
-
-    console.log(user);
-
-    let formData = new FormData();
-    for (let key in formInputObj) {
-      formData.append(key, formInputObj[key]);
-    }
-    console.log(formData);
+    editEmployee(user._id, formInputObj);
+    navigate(`/dashboard`);
   };
 
   return (
@@ -84,7 +72,6 @@ const UserDetails = () => {
                 <span className="text-teal-400">D</span>
                 etails
               </h1>
-
               <div className="flex justify-around">
                 <MdOutlineSettings
                   onClick={() => setShowModal(true)}
@@ -96,7 +83,7 @@ const UserDetails = () => {
                     setShowDeleteModal(true);
                   }}
                   size={30}
-                  className="text-red-400 animate-pulse"
+                  className="text-red-500 animate-pulse"
                 />
               </div>
             </div>
@@ -177,7 +164,9 @@ const UserDetails = () => {
                     <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2 ">
                       {/* INPUTS*/}
 
-                      {formArray.map((entry) => {
+                      {formArray.slice(0, 22).map((entry, idx) => {
+                        arr.push(user[entry.name]);
+
                         return (
                           <FormInput
                             key={entry.name}
@@ -186,7 +175,7 @@ const UserDetails = () => {
                             label={entry.label}
                             type={entry.type}
                             handleChange={handleChange}
-                            // defaultValue={`${user[entry.name]}`}
+                            defaultValue={arr[idx]}
                           />
                         );
                       })}
@@ -202,7 +191,7 @@ const UserDetails = () => {
                         Close
                       </button>
                       <button
-                        onClick={() => setShowModal(false)}
+                        // onClick={() => setShowModal(false)}
                         type="submit"
                         className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
                       >
@@ -216,7 +205,6 @@ const UserDetails = () => {
               </div>
             </div>
           </div>
-          <GrClose />
           <div className="opacity-80 fixed inset-0 z-40 bg-black"></div>
         </>
       )}
@@ -246,31 +234,29 @@ const UserDetails = () => {
                 </div>
                 {/* FORM */}
                 <div className=" p-6 flex-auto">
-                  <form onSubmit={handleSubmit}>
-                    <div className="flex flex-col md:flex-row justify-between  ">
-                      <h1 className=" text-black dark:text-white text-lg">
-                        Are you sure you want to delete {user.firstName}{" "}
-                        {user.lastName}'s data ?
-                      </h1>
-                      <div className="flex gap-5 mt-5">
-                        <button
-                          onClick={() => {
-                            deleteEmployee(user._id);
-                            navigate("/dashboard");
-                          }}
-                          className="bg-teal-400 text-white px-5 py-2 rounded-lg"
-                        >
-                          Yes
-                        </button>
-                        <button
-                          onClick={() => setShowDeleteModal(false)}
-                          className="bg-red-400 text-white px-5 py-2 rounded-lg"
-                        >
-                          No
-                        </button>
-                      </div>
+                  <div className="flex flex-col md:flex-row justify-between  ">
+                    <h1 className=" text-black dark:text-white text-lg">
+                      Are you sure you want to delete {user.firstName}{" "}
+                      {user.lastName}'s data ?
+                    </h1>
+                    <div className="flex gap-5 mt-5">
+                      <button
+                        onClick={() => {
+                          deleteEmployee(user._id);
+                          navigate("/dashboard");
+                        }}
+                        className="bg-teal-400 text-white px-5 py-2 rounded-lg"
+                      >
+                        Yes
+                      </button>
+                      <button
+                        onClick={() => setShowDeleteModal(false)}
+                        className="bg-red-400 text-white px-5 py-2 rounded-lg"
+                      >
+                        No
+                      </button>
                     </div>
-                  </form>
+                  </div>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6  border-solid rounded-b"></div>

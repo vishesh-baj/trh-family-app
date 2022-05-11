@@ -191,6 +191,7 @@ export const formArray = [
     type: "file",
   },
 ];
+
 // ** _______________________FUNCTIONS_____________________________
 
 // DARKMODE CONTROLLER FUNCTION

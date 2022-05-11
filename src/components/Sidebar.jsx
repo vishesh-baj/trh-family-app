@@ -13,7 +13,7 @@ const Sidebar = () => {
 
       <GiHamburgerMenu
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed h-8 w-8  -mt-14 ml-5  md:hidden z-40 text-teal-400"
+        className="fixed h-8 w-8  -mt-8 ml-5  md:hidden z-40 text-teal-black dark:text-white"
       />
 
       <div className="relative mt-6">
@@ -45,7 +45,7 @@ const Sidebar = () => {
               {/* Sidebar links */}
 
               <Link to="/dashboard">
-                <div className="flex items-center px-4 py-2 text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-200">
+                <div className="flex items-center px-4 py-2 text-gray-700 hover:bg-teal-800 hover:text-teal-100   dark:text-gray-200">
                   <MdSpaceDashboard size={20} />
 
                   <span className="mx-4 font-medium">Dashboard</span>
@@ -53,7 +53,7 @@ const Sidebar = () => {
               </Link>
 
               <Link to="/new-entry">
-                <div className="flex items-center px-4 py-2 text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-200">
+                <div className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-teal-800 hover:text-teal-100">
                   <AiOutlineUserAdd size={20} />
 
                   <span className="mx-4 font-medium">Add New</span>
