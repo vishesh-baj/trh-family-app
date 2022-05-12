@@ -14,35 +14,14 @@ const UserDetails = () => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [formInputObj, setFormInputObj] = useState({
-    firstName: "",
-    lastName: "",
-    dateOfBirth: "",
-    fatherFirstName: "",
-    fatherLastName: "",
-    motherName: "",
-    contactNo: "",
-    emergencyContactNo: "",
-    marriedStatus: "",
-    localAddress: "",
-    cityOrTown: "",
-    state: "",
-    pinCode: "",
-    permanentAddress: "",
-    email: "",
-    aadharNo: "",
-    anyOtherIdentity: "",
-    role: "",
-    joiningDate: "",
-    workExperience: "",
-    higherQualification: "",
-    bloodGroup: "",
-    profilePicture: "",
-  });
-
   const user = useSelector((state) => state.selectedUser);
 
-  let arr = [];
+  const removeLastVal = (obj) => {
+    delete obj[`${Object.keys(obj).length - 1}`];
+    return obj;
+  };
+
+  const [formInputObj, setFormInputObj] = useState(removeLastVal(user));
 
   // MODAL LOGIC
   // * handles the onChange foreach input
@@ -55,8 +34,11 @@ const UserDetails = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // const profilePic = user.profilePicture;
+    // formInputObj.profilePicture = profilePic;
+    console.log(formInputObj);
     editEmployee(user._id, formInputObj);
-    navigate(`/dashboard`);
+    // navigate(`/dashboard`);
   };
 
   return (
@@ -163,9 +145,8 @@ const UserDetails = () => {
                   <form onSubmit={handleSubmit}>
                     <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2 ">
                       {/* INPUTS*/}
-
-                      {formArray.slice(0, 22).map((entry, idx) => {
-                        arr.push(user[entry.name]);
+                      {formArray.slice(0, 22).map((entry) => {
+                        // arr.push(user[entry.name]);
 
                         return (
                           <FormInput
@@ -175,7 +156,7 @@ const UserDetails = () => {
                             label={entry.label}
                             type={entry.type}
                             handleChange={handleChange}
-                            defaultValue={arr[idx]}
+                            defaultValue={user[entry.name]}
                           />
                         );
                       })}

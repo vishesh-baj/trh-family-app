@@ -1,6 +1,5 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-
 import DashboardView from "../components/DashboardView";
 import Sidebar from "../components/Sidebar";
 

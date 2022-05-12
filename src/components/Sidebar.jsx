@@ -10,7 +10,6 @@ const Sidebar = () => {
   return (
     <React.Fragment>
       {/* Hamburger Menu   */}
-
       <GiHamburgerMenu
         onClick={() => setIsOpen(!isOpen)}
         className="fixed h-8 w-8  -mt-8 ml-5  md:hidden z-40 text-teal-black dark:text-white"
@@ -22,8 +21,7 @@ const Sidebar = () => {
             !isOpen && "hidden"
           } z-10  fixed md:fixed md:flex md:flex-col w-64 h-screen py-8 bg-white border-r dark:bg-gray-800 dark:border-gray-600 bg-gradient-to-tl from-teal-500 `}
         >
-          {/* specific Cartlane redirection  */}
-
+          {/* Close button */}
           <AiFillCloseCircle
             onClick={() => setIsOpen(!isOpen)}
             className="h-6 w-6 absolute right-5 md:hidden cursor-pointer"
@@ -36,7 +34,7 @@ const Sidebar = () => {
               alt="avatar"
             />
             <h4 className="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200 hover:underline">
-              Vishesh Bajpayee
+              Admin
             </h4>
           </div>
 
@@ -45,7 +43,7 @@ const Sidebar = () => {
               {/* Sidebar links */}
 
               <Link to="/dashboard">
-                <div className="flex items-center px-4 py-2 text-gray-700 hover:bg-teal-800 hover:text-teal-100   dark:text-gray-200">
+                <div className="flex items-center px-4 py-2 text-gray-700 hover:bg-teal-800 hover:text-teal-100   dark:text-gray-200 transition ease-in-out duration-300">
                   <MdSpaceDashboard size={20} />
 
                   <span className="mx-4 font-medium">Dashboard</span>
@@ -53,10 +51,10 @@ const Sidebar = () => {
               </Link>
 
               <Link to="/new-entry">
-                <div className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-teal-800 hover:text-teal-100">
+                <div className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-teal-800 hover:text-teal-100 transition ease-in-out duration-300">
                   <AiOutlineUserAdd size={20} />
 
-                  <span className="mx-4 font-medium">Add New</span>
+                  <span className="mx-4 font-medium">Add Employee</span>
                 </div>
               </Link>
             </nav>

@@ -18,5 +18,4 @@ const UserDataSlice = createSlice({
 });
 
 export const { getUsers } = UserDataSlice.actions;
-
 export default UserDataSlice.reducer;

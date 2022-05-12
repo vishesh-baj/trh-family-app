@@ -2,7 +2,7 @@ import * as Yup from "yup";
 
 // ** _______________________HELPER-OBJECTS_____________________________
 
-// VALIDATOR OBJECT FOR ADDING NEW EMPLOYEE FORM
+// ? VALIDATOR OBJECT FOR ADDING NEW EMPLOYEE FORM
 export const validatorObj = Yup.object({
   firstName: Yup.string("first name must be string")
     .required("first name is required")
@@ -50,7 +50,7 @@ export const validatorObj = Yup.object({
   pincode: Yup.number().required("pincode is required"),
 });
 
-// FROM ARRAY FOR MAPPING INPUTS
+// ? FROM ARRAY FOR MAPPING INPUTS
 export const formArray = [
   {
     id: "1",
@@ -192,20 +192,20 @@ export const formArray = [
   },
 ];
 
-// ** _______________________FUNCTIONS_____________________________
+// ** _______________________HELPER-FUNCTIONS_____________________________
 
-// DARKMODE CONTROLLER FUNCTION
+// ? DARKMODE CONTROLLER FUNCTION
 export const triggerDarkMode = (darkmode) => {
   darkmode && document.body.classList.add("dark");
   !darkmode && document.body.classList.remove("dark");
 };
 
-// LOCAL STORAGE CHECK FUNCTION
+// ? LOCAL STORAGE CHECK FUNCTION
 export const checkLocalStorage = () => {
   return localStorage.getItem("token") ? true : false;
 };
 
-// FILTER EMPLOYESS ON THE BASIS OF ROLE
+// ? FILTER EMPLOYESS ON THE BASIS OF ROLE
 export const filterEmployees = (employeesArr) => {
   const devEmployees = employeesArr.filter(
     (employee) => employee.role === "dev"
@@ -225,7 +225,7 @@ export const filterEmployees = (employeesArr) => {
   return employeeData;
 };
 
-// CONVERT CAMELCASE TO SPACE SEPERATED
+// ? CONVERT CAMELCASE TO SPACE SEPERATED
 
 export const convertCamelCase = (string) => {
   var result = string.replace(/([A-Z])/g, " $1");

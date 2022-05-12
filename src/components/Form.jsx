@@ -53,13 +53,12 @@ const Form = () => {
 
       <section className="w-full md:ml-64 flex-1 p-6 mx-auto bg-white shadow-md dark:bg-gray-800 mt-6">
         <h1 className="text-2xl font-semibold text-gray-700 capitalize dark:text-white">
-          Create New User
+          Create New Employee
         </h1>
 
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2 ">
             {/* INPUTS*/}
-
             {formArray.map((entry) => {
               return (
                 <FormInput

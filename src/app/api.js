@@ -29,7 +29,6 @@ export const getAllEmployees = async () => {
 
 // ? POST A NEW EMPLOYEE
 export const postEmployee = async (postData) => {
-  // Post users
   var imagedata = document.querySelector('input[type="file"]').files[0];
 
   let formData = new FormData();
@@ -41,7 +40,6 @@ export const postEmployee = async (postData) => {
       formData.append(keys[i], postData[keys[i]]);
     }
   }
-
   let baseUrl = "https://trh-family.herokuapp.com/";
   let url = baseUrl + "addemployee";
   axios({
@@ -60,7 +58,7 @@ export const postEmployee = async (postData) => {
 // ? EDIT AN EMPLOYEE
 export const editEmployee = async (employeeID, payload) => {
   const headers = { "Content-Type": "application/json, multipart/form-data" };
-  await axios.put(`${URL}/emplopyee/${employeeID}`, payload, headers);
+  await axios.put(`${URL}/employee/${employeeID}`, payload, headers);
 };
 
 //  ? DELETE AN EMPLOYEE
