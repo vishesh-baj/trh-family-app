@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import UserInfoCard from "../components/SubComponents/UserInfoCard";
 import Sidebar from "../components/Sidebar";
 import { convertCamelCase, formArray } from "../app/helpers";
@@ -9,12 +9,15 @@ import { GrClose } from "react-icons/gr";
 import { MdDeleteOutline } from "react-icons/md";
 import { deleteEmployee, editEmployee } from "../app/api";
 import { useNavigate } from "react-router-dom";
+import { getUsers } from "../features/user/UserDataSlice";
 
 const UserDetails = () => {
   const navigate = useNavigate();
+  const user = useSelector((state) => state.selectedUser);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const user = useSelector((state) => state.selectedUser);
+  const [updatedObj, setUpdatedObj] = useState({});
+  const dispatch = useDispatch();
 
   const removeLastVal = (obj) => {
     delete obj[`${Object.keys(obj).length - 1}`];
@@ -33,9 +36,15 @@ const UserDetails = () => {
   // * Submit the form
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formInputObj);
-    editEmployee(user._id, formInputObj);
-    // navigate(`/dashboard`);
+    const updatedData = editEmployee(user._id, formInputObj);
+    await updatedData
+      .then((res) => {
+        console.log(res);
+        setUpdatedObj(res);
+      })
+      .then(() => dispatch(getUsers(updatedObj)));
+
+    navigate("/dashboard");
   };
 
   return (
@@ -168,13 +177,14 @@ const UserDetails = () => {
                       >
                         Close
                       </button>
-                      <button
-                        // onClick={() => setShowModal(false)}
-                        type="submit"
-                        className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
-                      >
-                        Save
-                      </button>
+                      <div>
+                        <button
+                          type="submit"
+                          className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+                        >
+                          Save
+                        </button>
+                      </div>
                     </div>
                   </form>
                 </div>

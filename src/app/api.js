@@ -58,8 +58,15 @@ export const postEmployee = async (postData) => {
 
 // ? EDIT AN EMPLOYEE
 export const editEmployee = async (employeeID, payload) => {
+  let data;
   const headers = { "Content-Type": "application/json, multipart/form-data" };
-  await axios.put(`${URL}/employee/${employeeID}`, payload, headers);
+  await axios
+    .put(`${URL}/employee/${employeeID}`, payload, headers)
+    .then((res) => (data = res.data.data));
+
+  console.log(data);
+
+  return data;
 };
 
 //  ? DELETE AN EMPLOYEE
