@@ -43,6 +43,7 @@ const UserDetails = () => {
         setUpdatedObj(res);
       })
       .then(() => dispatch(getUsers(updatedObj)));
+    console.log(updatedObj);
 
     navigate("/dashboard");
   };

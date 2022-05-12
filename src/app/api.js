@@ -86,3 +86,14 @@ export const deleteEmployee = (employeeId) => {
       console.log(error);
     });
 };
+
+// ? GET ALL STATES
+
+export const getAllStates = async () => {
+  const headers = new Headers();
+  headers.append("X-CSCAPI-KEY", "API_KEY");
+
+  await axios
+    .get("https://api.countrystatecity.in/v1/countries", headers)
+    .then((res) => res.data.data);
+};

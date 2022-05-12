@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-
+import { data as countriesData } from "../db/country-state";
 // ** _______________________HELPER-OBJECTS_____________________________
 
 // ? VALIDATOR OBJECT FOR ADDING NEW EMPLOYEE FORM
@@ -122,7 +122,7 @@ export const formArray = [
     id: " 12",
     name: "state",
     label: "State",
-    type: "text",
+    type: "select",
   },
   {
     id: "13",
@@ -251,4 +251,11 @@ export const convertCamelCase = (string) => {
   var finalResult = result.charAt(0).toUpperCase() + result.slice(1);
 
   return finalResult;
+};
+
+// FILTER COUNTRY FROM ALL COUNTRYIES
+
+export const getCountry = () => {
+  const india = countriesData.filter((country) => country.name === "India");
+  return india[0].states;
 };

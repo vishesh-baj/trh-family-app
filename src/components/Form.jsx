@@ -1,13 +1,10 @@
 // import { useFormik } from "formik";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { postEmployee } from "../app/api";
 import { formArray } from "../app/helpers";
 import Sidebar from "./Sidebar";
 import FormInput from "./SubComponents/FormInput";
-
 const Form = () => {
-  // const navigate = useNavigate();
   const [formInputObj, setFormInputObj] = useState({
     firstName: "",
     lastName: "",
@@ -34,6 +31,8 @@ const Form = () => {
     bloodGroup: "",
     profilePicture: "",
   });
+
+  useEffect(() => {}, []);
 
   // * handles the onChange for each input
 
