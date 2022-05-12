@@ -47,41 +47,47 @@ const Tabs = () => {
               )}
             >
               <ul className="  flex-wrap dark:bg-gray-700 bg-teal-50">
-                {posts.map((post, idx) => (
-                  <Link
-                    key={idx * 100}
-                    onClick={() => dispatch(getSelectedUser(post))}
-                    to={`/employee/${post._id}`}
-                  >
-                    <li
-                      key={post._id}
-                      className="relative my-5 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-300 hover:scale-105 transform ease-in-out flex-col flex md:flex-row  justify-between px-3  py-3 rounded-md hover:bg-coolGray-100 cursor-pointer dark:bg-gray-700 dark:text-gray-50 "
+                {posts ? (
+                  posts.map((post, idx) => (
+                    <Link
+                      key={idx * 100}
+                      onClick={() => dispatch(getSelectedUser(post))}
+                      to={`/employee/${post._id}`}
                     >
-                      <div>
-                        <h3 className="text-sm font-medium leading-5">
-                          {post.firstName} {post.last_name}
-                        </h3>
+                      <li
+                        key={post._id}
+                        className="relative my-5 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-300 hover:scale-105 transform ease-in-out flex-col flex md:flex-row  justify-between px-3  py-3 rounded-md hover:bg-coolGray-100 cursor-pointer dark:bg-gray-700 dark:text-gray-50 "
+                      >
+                        <div>
+                          <h3 className="text-sm font-medium leading-5">
+                            {post.firstName} {post.last_name}
+                          </h3>
 
-                        <ul className="flex mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
-                          <li>
-                            <em>Role:</em> {post.role}
-                          </li>
-                          <li>&middot;</li>
-                          <li>
-                            <em>Primary Contact:</em> {post.contactNo}
-                          </li>
-                          <li>&middot;</li>
-                        </ul>
-                      </div>
+                          <ul className="flex mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
+                            <li>
+                              <em>Role:</em> {post.role}
+                            </li>
+                            <li>&middot;</li>
+                            <li>
+                              <em>Primary Contact:</em> {post.contactNo}
+                            </li>
+                            <li>&middot;</li>
+                          </ul>
+                        </div>
 
-                      <div className=" flex gap-10 mt-5 ">
-                        <button className="px-3 py-2 rounded-lg bg-teal-500 text-white mb-4 hover:bg-teal-700 transition ease-in-out duration-150">
-                          View Details
-                        </button>
-                      </div>
-                    </li>
-                  </Link>
-                ))}
+                        <div className=" flex gap-10 mt-5 ">
+                          <button className="px-3 py-2 rounded-lg bg-teal-500 text-white mb-4 hover:bg-teal-700 transition ease-in-out duration-150">
+                            View Details
+                          </button>
+                        </div>
+                      </li>
+                    </Link>
+                  ))
+                ) : (
+                  <h1 className="text-center text-2xl text-black dark:text-teal-400">
+                    No Data found
+                  </h1>
+                )}
               </ul>
             </Tab.Panel>
           ))}
