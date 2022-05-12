@@ -48,10 +48,10 @@ const Form = () => {
   };
 
   return (
-    <div className="flex mt-14">
+    <div className="flex mt-20">
       <Sidebar />
 
-      <section className="w-full md:ml-64 flex-1 p-6 mx-auto bg-white shadow-md dark:bg-gray-800 mt-6">
+      <section className="w-full font-primaryFont md:ml-64 flex-1 p-6 mx-auto bg-white shadow-md dark:bg-gray-800 ">
         <h1 className="text-2xl font-semibold text-gray-700 capitalize dark:text-white">
           Create New Employee
         </h1>
@@ -76,7 +76,7 @@ const Form = () => {
           {/* SUBMIT BUTTON */}
           <div className="flex justify-end mt-6">
             <button
-              onClick={() => navigate("/dashboard")}
+              // onClick={() => navigate("/dashboard")}
               type="submit"
               className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
             >

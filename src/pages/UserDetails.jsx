@@ -34,8 +34,6 @@ const UserDetails = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const profilePic = user.profilePicture;
-    // formInputObj.profilePicture = profilePic;
     console.log(formInputObj);
     editEmployee(user._id, formInputObj);
     // navigate(`/dashboard`);
@@ -44,7 +42,7 @@ const UserDetails = () => {
   return (
     <React.Fragment>
       <Sidebar />
-      <div className="mt-20 md:ml-64 h-auto bg-teal-50  dark:bg-gray-700">
+      <div className="mt-20 md:ml-64 h-auto bg-teal-50  dark:bg-gray-700 font-primaryFont">
         <div className="p-10 flex-col lg:flex-row flex gap-10">
           {/* personal Details */}
           <div className=" p-10 w-full lg:w-1/2 hover:shadow-xl hover:scale-105 hover:shadow-gray-200 hover:bg-gray-100 transiition ease-in-out duration-300 h-[80vh] bg-teal-50 dark:bg-gray-700 rounded-xl shadow-lg shadow-gray-200 cursor-pointer dark:shadow-gray-800 dark:hover:shadow-gray-800">
@@ -121,7 +119,7 @@ const UserDetails = () => {
       {showModal && (
         <>
           <div
-            className={`justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none   transition ease-in duration-300`}
+            className={`justify-center font-primaryFont items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none   transition ease-in duration-300`}
           >
             <div className=" my-6 mx-auto w-[70vw] h-[80vh] md:w-1/2 md:h-1/2 fixed overflow-scroll rounded-xl ">
               {/*content*/}
@@ -194,7 +192,7 @@ const UserDetails = () => {
       {showDeleteModal && (
         <>
           <div
-            className={`justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none   transition ease-in duration-300 `}
+            className={`justify-center font-primaryFont items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none   transition ease-in duration-300 `}
           >
             <div className=" my-6 mx-auto md:w-1/2 md:h-1/2 w-[70vw] h-[50vh] fixed overflow-scroll  ">
               {/*content*/}

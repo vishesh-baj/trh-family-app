@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { triggerDarkMode } from "../features/user/DarkMode";
 import { CgDarkMode } from "react-icons/cg";
+
 const Navbar = () => {
   const darkMode = useSelector((state) => state.darkMode);
   const dispatch = useDispatch();
