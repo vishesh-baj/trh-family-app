@@ -7,7 +7,7 @@ import Sidebar from "./Sidebar";
 import FormInput from "./SubComponents/FormInput";
 
 const Form = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [formInputObj, setFormInputObj] = useState({
     firstName: "",
     lastName: "",
@@ -44,6 +44,13 @@ const Form = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const select = document.querySelector(".selectRole").value;
+    const selectOtherDetails = document.querySelector(
+      ".selectOtherIdentity"
+    ).value;
+    formInputObj.role = select;
+    formInputObj.anyOtherIdentity = selectOtherDetails;
+    console.log(formInputObj);
     postEmployee(formInputObj);
   };
 

@@ -152,13 +152,19 @@ export const formArray = [
     id: "17",
     name: "anyOtherIdentity",
     label: "Any other identity",
+    type: "select",
+  },
+  {
+    id: "123",
+    name: "otherIdentityDetails",
+    label: "Other Identity Details",
     type: "text",
   },
   {
     id: "18",
     name: "role",
     label: "Role",
-    type: "text",
+    type: "select",
   },
   {
     id: "19",
@@ -190,6 +196,19 @@ export const formArray = [
     label: "Profile Picture",
     type: "file",
   },
+];
+
+// ? OPTIONS ARRAY FOR FORM SELECT COMPONENTS
+export const selectRole = [
+  { value: "dev", label: "Developer" },
+  { value: "sales", label: "Sales" },
+  { value: "hr", label: "Human Resources" },
+];
+
+export const selectOtherIdentity = [
+  { value: "pan", label: "PAN CARD" },
+  { value: "driving_lisence", label: "Driving Lisence" },
+  { value: "voter-id", label: "Voter Id" },
 ];
 
 // ** _______________________HELPER-FUNCTIONS_____________________________

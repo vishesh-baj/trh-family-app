@@ -1,4 +1,7 @@
 import React from "react";
+import { selectOtherIdentity, selectRole } from "../../app/helpers";
+import OtherIdentitySelect from "./OtherIdentitySelect";
+import SelectInput from "./SelectInput";
 
 const FormInput = ({ id, name, label, type, handleChange, defaultValue }) => {
   return (
@@ -7,14 +10,21 @@ const FormInput = ({ id, name, label, type, handleChange, defaultValue }) => {
         {label}
       </label>
 
-      <input
-        className="form-input"
-        id={id}
-        name={name}
-        type={type}
-        onChange={handleChange}
-        defaultValue={defaultValue}
-      />
+      {type === "select" ? (
+        (name === "role" && <SelectInput options={selectRole} />) ||
+        (name === "anyOtherIdentity" && (
+          <OtherIdentitySelect options={selectOtherIdentity} />
+        ))
+      ) : (
+        <input
+          className="form-input"
+          id={id}
+          name={name}
+          type={type}
+          onChange={handleChange}
+          defaultValue={defaultValue}
+        />
+      )}
     </div>
   );
 };
