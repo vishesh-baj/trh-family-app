@@ -31,7 +31,6 @@ const UserDetails = () => {
   };
 
   // * Submit the form
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formInputObj);

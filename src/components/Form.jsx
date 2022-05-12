@@ -26,6 +26,7 @@ const Form = () => {
     aadharNo: "",
     email: "",
     anyOtherIdentity: "",
+    otherIdentityDetails: "",
     role: "",
     joiningDate: "",
     workExperience: "",
@@ -45,11 +46,10 @@ const Form = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const select = document.querySelector(".selectRole").value;
-    const selectOtherDetails = document.querySelector(
-      ".selectOtherIdentity"
-    ).value;
+    const selectIdentity = document.querySelector(".selectOtherIdentity");
+
     formInputObj.role = select;
-    formInputObj.anyOtherIdentity = selectOtherDetails;
+    formInputObj.otherIdentityDetails = selectIdentity.value;
     console.log(formInputObj);
     postEmployee(formInputObj);
   };
