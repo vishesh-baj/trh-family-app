@@ -4,6 +4,7 @@ import { selectOtherIdentity, selectRole } from "../../app/helpers";
 import OtherIdentitySelect from "./OtherIdentitySelect";
 import SelectInput from "./SelectInput";
 import StatesSelected from "./StatesSelect";
+
 const FormInput = ({ id, name, label, type, handleChange, defaultValue }) => {
   const states = useSelector((state) => state.states);
   return (
